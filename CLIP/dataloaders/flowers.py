@@ -1,0 +1,77 @@
+import os
+import pickle
+import random
+import json
+from PIL import Image
+from scipy.io import loadmat
+from collections import defaultdict
+
+from torchvision.datasets.vision import VisionDataset
+class OxfordFlowers(VisionDataset):
+    def __init__(self,
+        root="./datasets/Flowers102/flowers-102",
+        train=True,
+        transform=None,
+        class_info='./CLIP/dataloaders/split_zhou_OxfordFlowers.json',
+    ):
+        self.root = root
+        self.train = train
+        self.transform = transform
+        self.class_info = class_info
+        self.image_dir = os.path.join(self.root, "jpg")
+        self.setid = os.path.join(self.root, 'setid.mat')
+
+        self.get_category()
+        self.read_data()
+        
+        if self.train:
+            self.images = self.train_imgs + self.val_imgs
+            self.labels = self.train_labels + self.val_labels
+        else:
+            self.images = self.test_imgs
+            self.labels = self.test_labels
+
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, index):
+        target = self.labels[index]
+        img = self.transform(Image.open(self.images[index]))
+        return img, target
+
+    def get_category(self):
+        self.image_to_class = {}
+        with open(self.class_info, "r") as f: obj = json.load(f)
+        
+        for i in obj['train']: self.image_to_class[i[0]] = i[1]
+        for i in obj['val']: self.image_to_class[i[0]] = i[1]
+        for i in obj['test']: self.image_to_class[i[0]] = i[1] 
+
+    def read_data(self):
+        # get the train, val and test image list
+        setid = loadmat(self.setid)
+        self.train_imgs = [f"image_{str(i).zfill(5)}.jpg" for i in setid['trnid'][0]]
+        self.val_imgs = [f"image_{str(i).zfill(5)}.jpg" for i in setid['valid'][0]]
+        self.test_imgs = [f"image_{str(i).zfill(5)}.jpg" for i in setid['tstid'][0]]
+        self.train_labels, self.val_labels, self.test_labels = [], [], []
+        for i in range(len(self.train_imgs)):
+            self.train_labels.append(self.image_to_class[self.train_imgs[i]])
+            self.train_imgs[i] = os.path.join(self.image_dir, self.train_imgs[i])
+            if os.path.exists(self.train_imgs[i]): pass
+            else: raise ValueError(f"{self.train_imgs[i]} path does not exist.")
+
+        for i in range(len(self.val_imgs)):
+            self.val_labels.append(self.image_to_class[self.val_imgs[i]])
+            self.val_imgs[i] = os.path.join(self.image_dir, self.val_imgs[i])
+            if os.path.exists(self.val_imgs[i]): pass
+            else: raise ValueError(f"{self.val_imgs[i]} path does not exist.")
+
+        for i in range(len(self.test_imgs)):
+            self.test_labels.append(self.image_to_class[self.test_imgs[i]])
+            self.test_imgs[i] = os.path.join(self.image_dir, self.test_imgs[i])
+            if os.path.exists(self.test_imgs[i]): pass
+            else: raise ValueError(f"{self.test_imgs[i]} path does not exist.")
+
+        assert len(self.train_labels)==len(self.train_imgs)==1020
+        assert len(self.val_labels)==len(self.val_imgs)==1020
+        assert len(self.test_labels)==len(self.test_imgs)==6149

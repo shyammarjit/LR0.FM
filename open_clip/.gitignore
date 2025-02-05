@@ -1,0 +1,4 @@
+output/
+output_new/
+*.pt
+*log_*

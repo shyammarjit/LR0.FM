@@ -1,0 +1,12 @@
+logs/
+tools/
+__pycache__/
+
+
+*.txt-*
+*.txt
+*.pkl
+*.jpg
+*core
+*.out
+*.pt
