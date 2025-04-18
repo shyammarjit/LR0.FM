@@ -26,10 +26,8 @@ Model | Backbones | Code | Results|
 |[OpenCLIP](https://arxiv.org/pdf/2212.07143)|OpenCLIP-ViT-B/16, OpenCLIP-ViT-B/32@256px, OpenCLIP-ViT-L/14 (laion2b_s32b_b82k), OpenCLIP-ViT-L/14 (datacomp_xl_s13b_b90k), OpenCLIP-ViT-H/14, OpenCLIP-ViT-H/14-quickgelu, OpenCLIP-ViT-H/14-quickgelu@378px, OpenCLIP-ViT-G/14|[code]()|[results]()|
 |[ALIBEF](https://arxiv.org/pdf/2107.07651)|ALBEF (4M), ALBEF (14M), ALBEF (14M + coco_finetuned), ALBEF (14M + flickr_finetuned)|[code]()|[results]()|
 
-<!-- ## Overall Analysis sheet @[link](https://docs.google.com/spreadsheets/d/1j33ixMwV3DUxafYisGnBAuUzomVSfy_8JeMOpQ18Lao/edit?usp=sharing) -->
 
-
-## WAR 
+## ⭐ WAR 
 Dataset weights. 
 
 | Dataset                        | Weight              |
@@ -50,7 +48,7 @@ Dataset weights.
 | EuroSAT                        | 1.0                 |
 | UCF101                         | 0.01                |
 
-## Diffusion generated synthetic Dataset
+## ⚡⚡ Diffusion generated synthetic Dataset
 
 Total 7,000 captions were used to generate images. These captions were randomly sampled google caption dataset and are placed in 
 https://github.com/shyammarjit/LR0.FM/tree/main/Captions
@@ -71,7 +69,7 @@ for fold in range(5):
     offset += 10
 ```
 
-## Lr-Tokens 
+## 🔥 Lr-Tokens 
 
         
 
@@ -80,7 +78,7 @@ for fold in range(5):
 ## ✏️ Citation
 If you think this project is helpful, please feel free to leave a star⭐️ and cite our paper:
 
-```bash
+```bibtex
 @inproceedings{pathak2025lrfm,
     title={{LR}0.{FM}: {LOW}-{RESOLUTION} {ZERO}-{SHOT} {CLASSIFICATION} {BENCHMARK} {FOR} {FOUNDATION} {MODELS}},
     author={Priyank Pathak and Shyam Marjit and Shruti Vyas and Yogesh S Rawat},
