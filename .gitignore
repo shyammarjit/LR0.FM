@@ -226,7 +226,7 @@ ENV/
 *slurm*
 *.pth*
 *.pkl
-*.csv
+# *.csv
 
 *Dumps/*
 *.png
