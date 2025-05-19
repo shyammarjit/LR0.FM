@@ -65,7 +65,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
     print("test transformations: ", transform_test)
     
     if dataset=='imagenet1k':
-        class_info="~/resolution-bm/EVA/EVA-CLIP/rei/data/imagenet.txt"
+        class_info="~/LR0.FM/EVA/EVA-CLIP/rei/data/imagenet.txt"
         home_directory = os.path.expanduser('~')
         class_info = class_info.replace("~", home_directory)
         
@@ -77,7 +77,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         )
     
     elif dataset == 'imagenet_a':
-        class_info="~/resolution-bm/CLIP/dataloaders/imagenet_a.txt"
+        class_info="~/LR0.FM/CLIP/dataloaders/imagenet_a.txt"
         home_directory = os.path.expanduser('~')
         class_info = class_info.replace("~", home_directory)
         test = ImagenetA(root="./datasets/imagenet-a", 
@@ -87,7 +87,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         )
     
     elif dataset == 'imagenet_r':
-        class_info="~/resolution-bm/CLIP/dataloaders/imagenet_r.txt"
+        class_info="~/LR0.FM/CLIP/dataloaders/imagenet_r.txt"
         home_directory = os.path.expanduser('~')
         class_info = class_info.replace("~", home_directory)
         test = ImagenetR(root="./datasets/imagenet-r", 
@@ -97,7 +97,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         )
     
     elif dataset == 'imagenet_sketch':
-        class_info="~/resolution-bm/CLIP/dataloaders/imagenet_sketch.txt"
+        class_info="~/LR0.FM/CLIP/dataloaders/imagenet_sketch.txt"
         home_directory = os.path.expanduser('~')
         class_info = class_info.replace("~", home_directory)
         
@@ -108,7 +108,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         )
     
     elif dataset == 'imagenet_v2':
-        class_info="~/resolution-bm/CLIP/dataloaders/imagenet_v2.txt"
+        class_info="~/LR0.FM/CLIP/dataloaders/imagenet_v2.txt"
         home_directory = os.path.expanduser('~')
         class_info = class_info.replace("~", home_directory)
         

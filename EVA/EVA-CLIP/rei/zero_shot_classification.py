@@ -71,6 +71,10 @@ def accuracy(output, target, topk=(1,)):
     return [float(correct[:k].reshape(-1).float().sum(0, keepdim=True).cpu().numpy()) for k in topk]
 
 def read_txt(file_location):
+    home_directory = os.path.expanduser('~')
+    file_location = file_location.replace("~", home_directory)
+        
+    
     with open(file_location, 'r') as file:
         content = file.read(); content = str(content); content = content.split('\n', -1)
     try: content.remove("")

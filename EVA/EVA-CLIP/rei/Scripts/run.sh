@@ -3,8 +3,54 @@
 # python -m pip install ptflops
 
 
+
+
+
+######################################## VANILLA EVAL
+
+
+cd ~/LR0.FM/EVA/EVA-CLIP/rei/
+conda activate pathak 
+
+CLASS_DIR='~/LR0.FM/CLIP/dataloaders/classes/'
+TEMPLATE_DIR='~/LR0.FM/CLIP/dataloaders/templates/'
+ROOT=/data/priyank/synthetic/food-101/
+
+CUDA_VISIBLE_DEVICES=1 python zero_shot_classification.py --dataset food101 --backbone '1CLIPg14' --low_resolution 32 --batch_size 50 \
+    --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --dataset_dir $ROOT --num_workers 6 --batch_size 400
+# 2CLIPbigE14 #     Model parameters: 4,704,589,569
+# Top-1 accuracy: 46.19 # Top-5 accuracy: 72.44
+# 2CLIPbigE14p #     Model parameters: 5,044,889,089
+# Top-1 accuracy: 47.00 # Top-5 accuracy: 72.46
+# 2CLIPL14-336 #     Model parameters: 428,083,137
+# Top-1 accuracy: 29.33 # Top-5 accuracy: 55.21
+# 2CLIPL14 #     Model parameters: 427,755,457
+# Top-1 accuracy: 36.00 # Top-5 accuracy: 62.67
+# 2CLIPB16 #     Model parameters: 149,691,137    
+# Top-1 accuracy: 24.08 # Top-5 accuracy: 50.68
+# 1CLIPg14p #     Model parameters: 1,366,621,569
+# Top-1 accuracy: 40.72 # Top-5 accuracy: 69.20
+# 1CLIPg14 #     Model parameters: 1,136,435,841 
+# Top-1 accuracy: 26.12 # Top-5 accuracy: 52.04
+
+
+
+
+
+
+
+
+
+
+
+
+# python -m pip install ftfy xformers xformers
+# python -m pip install webdataset iopath deepspeed==0.8.1
+# python -m pip install ptflops
+
+
 ######################################## Real World Data
-cd ~/resolution-bm/EVA/EVA-CLIP/rei/
+cd ~/LR0.FM/EVA/EVA-CLIP/rei/Scripts/run.sh
 conda activate pathak3 
 MODEL=2CLIPB16
 DATASET="real_world"
@@ -13,7 +59,6 @@ TEMPLATE_DIR='/home/ppriyank/resolution-bm/CLIP/dataloaders/templates/'
 ROOT=~/resolution-bm/REAL_WORLD/
 RES=224
 
-rsync -a ~/resolution-bm/REAL_WORLD/ ucf0:~/resolution-bm/REAL_WORLD/
 CUDA_VISIBLE_DEVICES=0 python analysis.py --dataset $DATASET --backbone $MODEL --low_resolution $RES  \
     --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --num_workers 6 --batch_size 1 --dataset_dir $ROOT
 
@@ -34,30 +79,6 @@ CUDA_VISIBLE_DEVICES=0 python analysis.py --dataset $DATASET --backbone $MODEL -
 
 
 
-######################################## VANILLA EVAL
-cd ~/resolution-bm/EVA/EVA-CLIP/rei/
-conda activate pathak 
-
-CLASS_DIR='/home/priyank/resolution-bm/CLIP/dataloaders/classes/'
-TEMPLATE_DIR='/home/priyank/resolution-bm/CLIP/dataloaders/templates/'
-ROOT=/data/priyank/synthetic/food-101/
-
-CUDA_VISIBLE_DEVICES=1 python zero_shot_classification.py --dataset food101 --backbone '1CLIPg14' --low_resolution 32 --batch_size 50 \
-    --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --dataset_dir $ROOT --num_workers 6 --batch_size 400
-# 2CLIPbigE14 #     Model parameters: 4,704,589,569
-# Top-1 accuracy: 46.19 # Top-5 accuracy: 72.44
-# 2CLIPbigE14p #     Model parameters: 5,044,889,089
-# Top-1 accuracy: 47.00 # Top-5 accuracy: 72.46
-# 2CLIPL14-336 #     Model parameters: 428,083,137
-# Top-1 accuracy: 29.33 # Top-5 accuracy: 55.21
-# 2CLIPL14 #     Model parameters: 427,755,457
-# Top-1 accuracy: 36.00 # Top-5 accuracy: 62.67
-# 2CLIPB16 #     Model parameters: 149,691,137    
-# Top-1 accuracy: 24.08 # Top-5 accuracy: 50.68
-# 1CLIPg14p #     Model parameters: 1,366,621,569
-# Top-1 accuracy: 40.72 # Top-5 accuracy: 69.20
-# 1CLIPg14 #     Model parameters: 1,136,435,841 
-# Top-1 accuracy: 26.12 # Top-5 accuracy: 52.04
 
  
 MODEL_NAME_FOR_WT=EVA02-CLIP-B-16 ## 2CLIPB16

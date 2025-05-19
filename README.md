@@ -17,7 +17,7 @@ Model | Backbones | Code | Results|
 |[CLIP](https://arxiv.org/pdf/2103.00020)|CLIP-ViT-B/32, CLIP-ViT-B/16, CLIP-ViT-L/14, CLIP-ViT-L/14@336px, CLIP-RN50, CLIP-RN101, CLIP-RN50x4, CLIP-RN50x16, CLIP-RN50x64|[code]()|[results]()|
 |[BLIP](https://arxiv.org/pdf/2201.12086)|BLIP-ViT-B/16 (14M), BLIP-ViT-B/16 (129M), BLIP-ViT-B/16 & CapFilt-L (129M), BLIP-ViT-L/16 (129M), BLIP-ViT-B/16 (129M + COCO), BLIP-ViT-B/16 (129M + Flickr), BLIP-ViT-L/16 (129M + COCO), BLIP-ViT-L/16 (129M + Flickr)|[code]()|[results]()|
 |[MetaCLIP](https://arxiv.org/pdf/2309.16671)|MetaCLIP-ViT-B/32 (400M), MetaCLIP-ViT-B/32 (2.5B), MetaCLIP-ViT-B/16 (400M), MetaCLIP-ViT-B/16 (2.5B), MetaCLIP-ViT-L/14 (400M), MetaCLIP-ViT-L/14 (2.5B), MetaCLIP-ViT-H/14 (2.5B), MetaCLIP-ViT-G/14 (2.5B)|[code]()|[results]()|
-|[EVA-CLIP](https://arxiv.org/pdf/2303.15389)|EVA-01-CLIP-g/14, EVA-01-CLIP-g/14+, EVA-02-CLIP-B/16, EVA-02-CLIP-E/14, EVA-02-CLIP-E/14+, EVA-02-CLIP-L/14, EVA-02-CLIP-L/14+|[code]()|[results]()|
+|[EVA-CLIP](https://arxiv.org/pdf/2303.15389)|EVA-01-CLIP-g/14, EVA-01-CLIP-g/14+, EVA-02-CLIP-B/16, EVA-02-CLIP-E/14, EVA-02-CLIP-E/14+, EVA-02-CLIP-L/14, EVA-02-CLIP-L/14+|[code](EVA/EVA-CLIP/rei/Scripts/eval.sh)|[results-csv](Results/EVA-CLIP - Zero-shot Classification.csv), [results-pdf](Results/EVA-CLIP - Zero-shot Classification.pdf)|
 |[EVA-CLIP-18B](https://arxiv.org/pdf/2402.04252)|EVA-CLIP-8B|[code]()|[results]()|
 |[CLIPA-v2](https://arxiv.org/pdf/2306.15658)|CLIPA(v2)-ViT-G/14, CLIPA(v2)-ViT-G/14@336px, CLIPA(v2)-ViT-H/14, CLIPA(v2)-ViT-H/14@336px (DataComp-1B), CLIPA(v2)-ViT-H/14@336px (LAION-2B), CLIPA(v2)-ViT-L/14, CLIPA(v2)-ViT-L/14@336px|[code]()|[results]()|
 |[$M^2$-Encoder](https://arxiv.org/pdf/2401.15896)|$M^2$-Encoder-0.4B, $M^2$-Encoder-1B, $M^2$-Encoder-10B|[code]()|[results]()|
@@ -68,6 +68,8 @@ for fold in range(5):
     [img.save(f"{ROOT}/{k+1 + offset}/{i}.png") for k,img in enumerate(images)]
     offset += 10
 ```
+
+## 🔥 Evaluations
 
 ## 🔥 Lr-Tokens 
 
