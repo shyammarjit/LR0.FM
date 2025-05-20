@@ -78,7 +78,7 @@ for fold in range(5):
 
 ## 🔥 Lr-Tokens 
 
-Training Code provided for [EVA](EVA/EVA-CLIP/rei/Scripts/run.sh), [MetaCLIP](MetaCLIP/scripts/run.sh), 
+Training Code provided for [EVA](EVA/EVA-CLIP/rei/Scripts/train.sh), [MetaCLIP](MetaCLIP/scripts/train.sh), [OpenCLIP](open_clip/scripts/train.sh)
         
 
 

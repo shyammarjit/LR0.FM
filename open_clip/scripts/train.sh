@@ -9,7 +9,7 @@ CLASS_DIR='~/LR0.FM/CLIP/dataloaders/classes/'
 TEMPLATE_DIR='~/LR0.FM/CLIP/dataloaders/templates/'
 
 arr=(imagenet1k imagenet_a imagenet_v2 imagenet_r imagenet_sketch caltech101 dtd food101 sun397 cars fgvc_aircraft pets flowers eurosat ucf101) 
-LOW_RES=(16 32)
+LOW_RES=(16 32 64 128)
 
 
 MODEL=OpenCLIP-ViT-B/16
@@ -40,108 +40,10 @@ CUDA_VISIBLE_DEVICES=0,1 python -W ignore -m torch.distributed.launch --nproc_pe
 
     
     
-
-
-
 ############################## EVAL 
-
-
-
-MODEL="OpenCLIP-ViT-B/16"
-RES=16
-TRAIN_FN=train_SS_MS
-LOW_RES=(16 32 64 128)
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN
-NAME=$OUTPUT_FILE
 LR_WT=./logs/$OUTPUT_FILE/checkpoints
-RES=16 
-OUTPUT_FILE=ucf_output/$NAME-$RES.txt
 wt=$LR_WT"/epoch_Best.pt"
-
-
 CUDA_VISIBLE_DEVICES=0 python src/zero_shot.py --dataset $dataset --low-resolution $RES --batch_size 400 --backbone $MODEL \
     --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --lr-mode --lr-wt $wt --strict --dataset_dir $ROOT 
 
 
-
-####################################################################################
-############################ Proposed META ############################
-####################################################################################
-
-MODEL="OpenCLIP-ViT-B/16"
-
-TRAIN_FN=train_SS_MS
-LOW_RES=(16 32 64 128 224)
-LOW_RES=(224)
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN-2
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN-3
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN-4
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN-5
-# OUTPUT_FILE=OC-V_B16-$TRAIN_FN-6
-
-NAME=$OUTPUT_FILE
-LR_WT=./logs/$OUTPUT_FILE/checkpoints
-for RES in "${LOW_RES[@]}"
-do 
-    OUTPUT_FILE=ucf_output/$NAME-$RES-3.txt
-    printf "\n\n $NAME \n\n" >> $OUTPUT_FILE
-    printf "\n\n $LR_WT \n\n" >> $OUTPUT_FILE
-    wt=$LR_WT"/epoch_Best.pt"
-    for dataset in "${arr[@]}"
-    do
-        echo "$dataset"
-        printf "\n\n $dataset \n\n\n$RES\n" >> $OUTPUT_FILE
-        CUDA_VISIBLE_DEVICES=0 python src/zero_shot.py --dataset $dataset --low-resolution $RES --batch_size 400 --backbone $MODEL \
-            --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --lr-mode --lr-wt $wt --strict >> $OUTPUT_FILE             
-    done
-done 
-
-
-# OUTPUT_FILE=OC-16-train_SS_MS-7k-30-EP10
-# # OUTPUT_FILE=OC-16-train_SS_MS-7k-30-EP10-2
-# NAME=META-$OUTPUT_FILE
-# LR_WT=~/resolution-bm/MetaCLIP/logs/$OUTPUT_FILE/checkpoints
-# for RES in "${LOW_RES[@]}"
-# do 
-#     OUTPUT_FILE=ucf_output/$NAME-$RES.txt
-#     printf "\n\n $NAME \n\n" >> $OUTPUT_FILE
-#     printf "\n\n $LR_WT \n\n" >> $OUTPUT_FILE
-#     wt=$LR_WT"/epoch_Best.pt"
-#     for dataset in "${arr[@]}"
-#     do
-#         echo "$dataset"
-#         printf "\n\n $dataset \n\n\n$RES\n" >> $OUTPUT_FILE
-#         CUDA_VISIBLE_DEVICES=0 python src/zero_shot.py --dataset $dataset --low-resolution $RES --batch_size 400 --backbone $MODEL \
-#             --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR --lr-mode --lr-wt $wt --strict --meta-version >> $OUTPUT_FILE             
-#     done
-# done 
-
-
-TRAIN_FN=VANILLA        
-OUTPUT_FILE=OC-V_B16-$TRAIN_FN
-NAME=$OUTPUT_FILE
-LOW_RES=(16 32 64 128 224)
-LOW_RES=(224)
-# for RES in "${LOW_RES[@]}"
-# do 
-#     OUTPUT_FILE=ucf_output/$NAME-$RES.txt
-#     printf "\n\n $NAME \n\n" >> $OUTPUT_FILE
-#     for dataset in "${arr[@]}"
-#     do
-#         echo "$dataset"
-#         printf "\n\n $dataset \n\n\n$RES\n" >> $OUTPUT_FILE
-#         CUDA_VISIBLE_DEVICES=0 python src/zero_shot.py --dataset $dataset --low-resolution $RES --batch_size 400 --backbone $MODEL \
-#             --class_dir $CLASS_DIR --templates_dir $TEMPLATE_DIR >> $OUTPUT_FILE             
-
-#     done
-# done 
-
-
-
-# rsync -a ~/resolution-bm/open_clip/ucf_output/* ucf2:~/resolution-bm/open_clip/ucf_output/
-# rsync -r ucf0:~/resolution-bm/open_clip/logs/ ~/resolution-bm/open_clip/logs/
-
-
-    
-    
