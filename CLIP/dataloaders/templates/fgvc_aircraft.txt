@@ -1,0 +1,2 @@
+a photo of a {}, a type of aircraft.
+a photo of the {}, a type of aircraft.

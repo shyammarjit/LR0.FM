@@ -16,17 +16,17 @@
 
 Model | Backbones | Code | Results|
 | --- | --- | --- | --- |
-|[CLIP](https://arxiv.org/pdf/2103.00020)|CLIP-ViT-B/32, CLIP-ViT-B/16, CLIP-ViT-L/14, CLIP-ViT-L/14@336px, CLIP-RN50, CLIP-RN101, CLIP-RN50x4, CLIP-RN50x16, CLIP-RN50x64|[code]()|[results_csv](Results/CLIP-Zero-shot_classification.csv), [results_pdf](Results/CLIP-Zero-shot_classification.pdf)|
-|[BLIP](https://arxiv.org/pdf/2201.12086)|BLIP-ViT-B/16 (14M), BLIP-ViT-B/16 (129M), BLIP-ViT-B/16 & CapFilt-L (129M), BLIP-ViT-L/16 (129M), BLIP-ViT-B/16 (129M + COCO), BLIP-ViT-B/16 (129M + Flickr), BLIP-ViT-L/16 (129M + COCO), BLIP-ViT-L/16 (129M + Flickr)|[code]()|[results_csv](Results/BLIP-Zero-Shot_classification.csv),  [results_pdf](Results/BLIP-Zero-Shot_classification.pdf) |
-|[MetaCLIP](https://arxiv.org/pdf/2309.16671)|MetaCLIP-ViT-B/32 (400M), MetaCLIP-ViT-B/32 (2.5B), MetaCLIP-ViT-B/16 (400M), MetaCLIP-ViT-B/16 (2.5B), MetaCLIP-ViT-L/14 (400M), MetaCLIP-ViT-L/14 (2.5B), MetaCLIP-ViT-H/14 (2.5B), MetaCLIP-ViT-G/14 (2.5B)|[code]()|[results_csv](Results/MetaCLIP-Zero-shot_Classification.csv), [results_pdf](Results/MetaCLIP-Zero-shot_Classification.pdf)|
-|[EVA-CLIP](https://arxiv.org/pdf/2303.15389)|EVA-01-CLIP-g/14, EVA-01-CLIP-g/14+, EVA-02-CLIP-B/16, EVA-02-CLIP-E/14, EVA-02-CLIP-E/14+, EVA-02-CLIP-L/14, EVA-02-CLIP-L/14+|[code](EVA/EVA-CLIP/rei/Scripts/eval.sh)| [results_csv](Results/EVA-CLIP-Zero-shot_Classification.csv), [results_pdf](Results/EVA-CLIP-Zero-shot_Classification.pdf)|
+|[CLIP](https://arxiv.org/pdf/2103.00020)|CLIP-ViT-B/32, CLIP-ViT-B/16, CLIP-ViT-L/14, CLIP-ViT-L/14@336px, CLIP-RN50, CLIP-RN101, CLIP-RN50x4, CLIP-RN50x16, CLIP-RN50x64|[code]()|[results_csv](MetaData/Results/CLIP-Zero-shot_classification.csv), [results_pdf](MetaData/Results/CLIP-Zero-shot_classification.pdf)|
+|[BLIP](https://arxiv.org/pdf/2201.12086)|BLIP-ViT-B/16 (14M), BLIP-ViT-B/16 (129M), BLIP-ViT-B/16 & CapFilt-L (129M), BLIP-ViT-L/16 (129M), BLIP-ViT-B/16 (129M + COCO), BLIP-ViT-B/16 (129M + Flickr), BLIP-ViT-L/16 (129M + COCO), BLIP-ViT-L/16 (129M + Flickr)|[code]()|[results_csv](MetaData/Results/BLIP-Zero-Shot_classification.csv),  [results_pdf](MetaData/Results/BLIP-Zero-Shot_classification.pdf) |
+|[MetaCLIP](https://arxiv.org/pdf/2309.16671)|MetaCLIP-ViT-B/32 (400M), MetaCLIP-ViT-B/32 (2.5B), MetaCLIP-ViT-B/16 (400M), MetaCLIP-ViT-B/16 (2.5B), MetaCLIP-ViT-L/14 (400M), MetaCLIP-ViT-L/14 (2.5B), MetaCLIP-ViT-H/14 (2.5B), MetaCLIP-ViT-G/14 (2.5B)|[code]()|[results_csv](MetaData/Results/MetaCLIP-Zero-shot_Classification.csv), [results_pdf](MetaData/Results/MetaCLIP-Zero-shot_Classification.pdf)|
+|[EVA-CLIP](https://arxiv.org/pdf/2303.15389)|EVA-01-CLIP-g/14, EVA-01-CLIP-g/14+, EVA-02-CLIP-B/16, EVA-02-CLIP-E/14, EVA-02-CLIP-E/14+, EVA-02-CLIP-L/14, EVA-02-CLIP-L/14+|[code](EVA/EVA-CLIP/rei/Scripts/eval.sh)| [results_csv](MetaData/Results/EVA-CLIP-Zero-shot_Classification.csv), [results_pdf](MetaData/Results/EVA-CLIP-Zero-shot_Classification.pdf)|
 |[EVA-CLIP-18B](https://arxiv.org/pdf/2402.04252)|EVA-CLIP-8B|[code]()| Last column above|
-|[CLIPA-v2](https://arxiv.org/pdf/2306.15658)|CLIPA(v2)-ViT-G/14, CLIPA(v2)-ViT-G/14@336px, CLIPA(v2)-ViT-H/14, CLIPA(v2)-ViT-H/14@336px (DataComp-1B), CLIPA(v2)-ViT-H/14@336px (LAION-2B), CLIPA(v2)-ViT-L/14, CLIPA(v2)-ViT-L/14@336px|[code]()| [results_csv](Results/CLIPA-Zero-shot_classification.csv), [results_pdf](Results/CLIPA-Zero-shot_classification.pdf) |
-|[$M^2$-Encoder](https://arxiv.org/pdf/2401.15896)|$M^2$-Encoder-0.4B, $M^2$-Encoder-1B, $M^2$-Encoder-10B|[code]()| [results_csv](Results/M2-Encoder-Zero-shot_classification.csv), [results_pdf](Results/M2-Encoder-Zero-shot_classification.pdf) |
-|[CoCa](https://arxiv.org/pdf/2205.01917v2)|CoCa-ViT-B/32, CoCa-ViT-L/14 (laion2b_s13b_b90k), CoCa-ViT-L/14(laion2b_s13b_b90k + mscoco)|[code]()|[results_csv](Results/CoCa-Zero-Shot_Classification.csv), [results_pdf](Results/CoCa-Zero-Shot_Classification.pdf)|
-|[SigLIP](https://arxiv.org/pdf/2303.15343)|SigLIP-ViT-B/16, SigLIP-ViT-B/16@256px, SigLIP-ViT-B/16@384px, SigLIP-ViT-B/16@512px, SigLIP-ViT-L/16@256px,  SigLIP-ViT-L/16@384px, SigLIP-ViT-SO400M, SigLIP-ViT-SO400M@384px|[code]()|[results_csv](Results/SigLIP-Zero-Shot_Classification.csv), [results_pdf](Results/SigLIP-Zero-Shot_Classification.pdf)|
-|[OpenCLIP](https://arxiv.org/pdf/2212.07143)|OpenCLIP-ViT-B/16, OpenCLIP-ViT-B/32@256px, OpenCLIP-ViT-L/14 (laion2b_s32b_b82k), OpenCLIP-ViT-L/14 (datacomp_xl_s13b_b90k), OpenCLIP-ViT-H/14, OpenCLIP-ViT-H/14-quickgelu, OpenCLIP-ViT-H/14-quickgelu@378px, OpenCLIP-ViT-G/14|[code]()|[results_csv](Results/OpenCLIP-Zero-Shot_Classification.csv), [results_pdf](Results/OpenCLIP-Zero-Shot_Classification.pdf)|
-|[ALIBEF](https://arxiv.org/pdf/2107.07651)|ALBEF (4M), ALBEF (14M), ALBEF (14M + coco_finetuned), ALBEF (14M + flickr_finetuned)|[code]()|[results_csv](Results/ALBEF-Zero-Shot_Classification.csv), [results_pdf](Results/ALBEF-Zero-Shot_Classification.pdf)|
+|[CLIPA-v2](https://arxiv.org/pdf/2306.15658)|CLIPA(v2)-ViT-G/14, CLIPA(v2)-ViT-G/14@336px, CLIPA(v2)-ViT-H/14, CLIPA(v2)-ViT-H/14@336px (DataComp-1B), CLIPA(v2)-ViT-H/14@336px (LAION-2B), CLIPA(v2)-ViT-L/14, CLIPA(v2)-ViT-L/14@336px|[code]()| [results_csv](MetaData/Results/CLIPA-Zero-shot_classification.csv), [results_pdf](MetaData/Results/CLIPA-Zero-shot_classification.pdf) |
+|[$M^2$-Encoder](https://arxiv.org/pdf/2401.15896)|$M^2$-Encoder-0.4B, $M^2$-Encoder-1B, $M^2$-Encoder-10B|[code]()| [results_csv](MetaData/Results/M2-Encoder-Zero-shot_classification.csv), [results_pdf](MetaData/Results/M2-Encoder-Zero-shot_classification.pdf) |
+|[CoCa](https://arxiv.org/pdf/2205.01917v2)|CoCa-ViT-B/32, CoCa-ViT-L/14 (laion2b_s13b_b90k), CoCa-ViT-L/14(laion2b_s13b_b90k + mscoco)|[code]()|[results_csv](MetaData/Results/CoCa-Zero-Shot_Classification.csv), [results_pdf](MetaData/Results/CoCa-Zero-Shot_Classification.pdf)|
+|[SigLIP](https://arxiv.org/pdf/2303.15343)|SigLIP-ViT-B/16, SigLIP-ViT-B/16@256px, SigLIP-ViT-B/16@384px, SigLIP-ViT-B/16@512px, SigLIP-ViT-L/16@256px,  SigLIP-ViT-L/16@384px, SigLIP-ViT-SO400M, SigLIP-ViT-SO400M@384px|[code]()|[results_csv](MetaData/Results/SigLIP-Zero-Shot_Classification.csv), [results_pdf](MetaData/Results/SigLIP-Zero-Shot_Classification.pdf)|
+|[OpenCLIP](https://arxiv.org/pdf/2212.07143)|OpenCLIP-ViT-B/16, OpenCLIP-ViT-B/32@256px, OpenCLIP-ViT-L/14 (laion2b_s32b_b82k), OpenCLIP-ViT-L/14 (datacomp_xl_s13b_b90k), OpenCLIP-ViT-H/14, OpenCLIP-ViT-H/14-quickgelu, OpenCLIP-ViT-H/14-quickgelu@378px, OpenCLIP-ViT-G/14|[code]()|[results_csv](MetaData/Results/OpenCLIP-Zero-Shot_Classification.csv), [results_pdf](MetaData/Results/OpenCLIP-Zero-Shot_Classification.pdf)|
+|[ALIBEF](https://arxiv.org/pdf/2107.07651)|ALBEF (4M), ALBEF (14M), ALBEF (14M + coco_finetuned), ALBEF (14M + flickr_finetuned)|[code]()|[results_csv](MetaData/Results/ALBEF-Zero-Shot_Classification.csv), [results_pdf](MetaData/Results/ALBEF-Zero-Shot_Classification.pdf)|
 
 
 
@@ -54,7 +54,8 @@ Dataset weights.
 ## ⚡⚡ Diffusion generated synthetic Dataset
 
 Total 7,000 captions were used to generate images. These captions were randomly sampled google caption dataset and are placed in 
-https://github.com/shyammarjit/LR0.FM/tree/main/Captions
+https://github.com/shyammarjit/LR0.FM/tree/main/MetaData/Captions
+
 
 Feeding the dataset to the Diffusuion model via : 
 ```
@@ -74,6 +75,7 @@ for fold in range(5):
 
 ## 🔥 Evaluations
 
+
 ## 🔥 Lr-Tokens 
 
         
@@ -84,8 +86,9 @@ for fold in range(5):
 If you think this project is helpful, please feel free to leave a star⭐️ and cite our paper:
 
 ```bibtex
-@inproceedings{pathak2025lrfm,
-    title={{LR}0.{FM}: {LOW}-{RESOLUTION} {ZERO}-{SHOT} {CLASSIFICATION} {BENCHMARK} {FOR} {FOUNDATION} {MODELS}},
+@inproceedings{
+    pathak2025lrfm,
+    title={{ LR0.FM: Low-Res Benchmark and Improving robustness for Zero-Shot Classification in Foundation Models} },
     author={Priyank Pathak and Shyam Marjit and Shruti Vyas and Yogesh S Rawat},
     booktitle={The Thirteenth International Conference on Learning Representations},
     year={2025},

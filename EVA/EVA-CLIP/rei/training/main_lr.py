@@ -49,6 +49,11 @@ def read_txt(file_location):
     return content
 
 def get_classes_prompts(args):
+    home_directory = os.path.expanduser('~')
+    args.class_dir = args.class_dir.replace("~", home_directory)
+    args.templates_dir = args.templates_dir.replace("~", home_directory)
+    
+    
     classes = read_txt(os.path.join(args.class_dir, f"{args.dataset}.txt"))
     templates = read_txt(os.path.join(args.templates_dir, f"{args.dataset}.txt"))
     return classes, templates
@@ -445,27 +450,6 @@ def main(args):
         # train_one_epoch_lr(model, data, epoch, optimizer, scaler, scheduler, args, writer)
         
 
-        ###### OUTDATED
-        # Only Spatial Tken
-        # train_one_epoch_lr2(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Pseudo Distillation + Text similarity")
-        # train_one_epoch_lr6(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("ONLY Text similarity")
-        # train_one_epoch_lr7(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Text similarity (only HR text)")
-        # train_one_epoch_lr8(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Pseudo Distillation + Clasification + Text similarity")
-        # train_one_epoch_lr5(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-
-        # logging.info("Pseudo Distillation + Clasification + Normal Triplet Loss + Text similarity (only HD Text)")
-        # train_one_epoch_lr11(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Pseudo Distillation + Clasification + Triplet Loss (SEP) + Text similarity (HD + LR)")
-        # train_one_epoch_lr12(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Pseudo Distillation + Clasification + Triplet Loss (SEP) + Text similarity (HD)")
-        # train_one_epoch_lr13(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        # logging.info("Pseudo Distillation + Clasification + Resolution Distentanglement")
-        # train_one_epoch_lr15(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        
         ###### Shortlisted
         if args.train_fn == "MS":
             logging.info("Pseudo Distillation")

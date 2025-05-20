@@ -812,6 +812,8 @@ def train_one_epoch_lr3(model, data, epoch, optimizer, scaler, scheduler, args, 
         else:
             optimizer.zero_grad()
 
+        import pdb
+        pdb.set_trace()
         with torch.no_grad():
             image_features_HR_Truth, _, logit_scale, _, _ = model(IMG_HR, None, use_spatial_tokens=False)
 
