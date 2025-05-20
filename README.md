@@ -14,11 +14,12 @@
 
 ## 🎖️ Zero-Shot Classification Results in Low Resolution
 
-Model | Backbones | Code | Results|
+Model | Backbones | Validation Code | Results|
 | --- | --- | --- | --- |
 |[CLIP](https://arxiv.org/pdf/2103.00020)|CLIP-ViT-B/32, CLIP-ViT-B/16, CLIP-ViT-L/14, CLIP-ViT-L/14@336px, CLIP-RN50, CLIP-RN101, CLIP-RN50x4, CLIP-RN50x16, CLIP-RN50x64|[code]()|[results_csv](MetaData/Results/CLIP-Zero-shot_classification.csv), [results_pdf](MetaData/Results/CLIP-Zero-shot_classification.pdf)|
 |[BLIP](https://arxiv.org/pdf/2201.12086)|BLIP-ViT-B/16 (14M), BLIP-ViT-B/16 (129M), BLIP-ViT-B/16 & CapFilt-L (129M), BLIP-ViT-L/16 (129M), BLIP-ViT-B/16 (129M + COCO), BLIP-ViT-B/16 (129M + Flickr), BLIP-ViT-L/16 (129M + COCO), BLIP-ViT-L/16 (129M + Flickr)|[code]()|[results_csv](MetaData/Results/BLIP-Zero-Shot_classification.csv),  [results_pdf](MetaData/Results/BLIP-Zero-Shot_classification.pdf) |
-|[MetaCLIP](https://arxiv.org/pdf/2309.16671)|MetaCLIP-ViT-B/32 (400M), MetaCLIP-ViT-B/32 (2.5B), MetaCLIP-ViT-B/16 (400M), MetaCLIP-ViT-B/16 (2.5B), MetaCLIP-ViT-L/14 (400M), MetaCLIP-ViT-L/14 (2.5B), MetaCLIP-ViT-H/14 (2.5B), MetaCLIP-ViT-G/14 (2.5B)|[code]()|[results_csv](MetaData/Results/MetaCLIP-Zero-shot_Classification.csv), [results_pdf](MetaData/Results/MetaCLIP-Zero-shot_Classification.pdf)|
+|[MetaCLIP](https://arxiv.org/pdf/2309.16671)|MetaCLIP-ViT-B/32 (400M), MetaCLIP-ViT-B/32 (2.5B), MetaCLIP-ViT-B/16 (400M), MetaCLIP-ViT-B/16 (2.5B), MetaCLIP-ViT-L/14 (400M), MetaCLIP-ViT-L/14 (2.5B), MetaCLIP-ViT-H/14 (2.5B), MetaCLIP-ViT-G/14 (2.5B)|[code](MetaCLIP/scripts/eval.sh)|[results_csv](MetaData/Results/MetaCLIP-Zero-shot_Classification.csv), 
+[results_pdf](MetaData/Results/MetaCLIP-Zero-shot_Classification.pdf)|
 |[EVA-CLIP](https://arxiv.org/pdf/2303.15389)|EVA-01-CLIP-g/14, EVA-01-CLIP-g/14+, EVA-02-CLIP-B/16, EVA-02-CLIP-E/14, EVA-02-CLIP-E/14+, EVA-02-CLIP-L/14, EVA-02-CLIP-L/14+|[code](EVA/EVA-CLIP/rei/Scripts/eval.sh)| [results_csv](MetaData/Results/EVA-CLIP-Zero-shot_Classification.csv), [results_pdf](MetaData/Results/EVA-CLIP-Zero-shot_Classification.pdf)|
 |[EVA-CLIP-18B](https://arxiv.org/pdf/2402.04252)|EVA-CLIP-8B|[code]()| Last column above|
 |[CLIPA-v2](https://arxiv.org/pdf/2306.15658)|CLIPA(v2)-ViT-G/14, CLIPA(v2)-ViT-G/14@336px, CLIPA(v2)-ViT-H/14, CLIPA(v2)-ViT-H/14@336px (DataComp-1B), CLIPA(v2)-ViT-H/14@336px (LAION-2B), CLIPA(v2)-ViT-L/14, CLIPA(v2)-ViT-L/14@336px|[code]()| [results_csv](MetaData/Results/CLIPA-Zero-shot_classification.csv), [results_pdf](MetaData/Results/CLIPA-Zero-shot_classification.pdf) |
@@ -73,11 +74,11 @@ for fold in range(5):
     offset += 10
 ```
 
-## 🔥 Evaluations
 
 
 ## 🔥 Lr-Tokens 
 
+Training Code provided for [EVA](EVA/EVA-CLIP/rei/Scripts/run.sh), [MetaCLIP](MetaCLIP/scripts/run.sh), 
         
 
 

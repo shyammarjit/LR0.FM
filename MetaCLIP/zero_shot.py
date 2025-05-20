@@ -114,6 +114,11 @@ def read_txt(file_location):
     return content
 
 def get_classes_prompts(args):
+    home_directory = os.path.expanduser('~')
+    args.class_dir = args.class_dir.replace("~", home_directory)
+    args.templates_dir = args.templates_dir.replace("~", home_directory)
+    
+    
     classes = read_txt(os.path.join(args.class_dir, f"{args.dataset}.txt"))
     templates = read_txt(os.path.join(args.templates_dir, f"{args.dataset}.txt"))
     return classes, templates

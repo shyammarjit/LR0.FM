@@ -141,7 +141,10 @@ def main(args=None):
         args.distributed = True 
         args.distributed_engine = args_.dist_backend
         # print(args.distributed)
-        args.val_data = None
+        
+        args.val_data_path = args_.val_data
+        args.val_datataset = args_.val_datataset
+        
         args.imagenet_val = None 
         args.imagenet_v2 = None
 
@@ -426,12 +429,8 @@ def main(args=None):
 
 
     #################### VALIDATION 
-    args.dataset_dir = '/data/priyank/synthetic/oxford_pets'
-    args.dataset = 'pets'
-    if not os.path.exists(args.dataset_dir):
-        args.dataset_dir = None
-        args.dataset = 'imagenet_sketch'
-    
+    args.dataset_dir = args.val_data_path
+    args.dataset = args.val_datataset
     print("=====", args.class_dir, args.templates_dir)
     classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
     print(f" Classes: {len(classes)}, prompt templates: {len(templates)}")

@@ -423,11 +423,9 @@ def main(args):
     # if args.lr_mode:max_epochs=20
 
     
-    args.dataset_dir = '/data/priyank/synthetic/oxford_pets'
-    args.dataset = 'pets'
-    if not os.path.exists(args.dataset_dir):
-        args.dataset_dir = None
-        args.dataset = 'imagenet_sketch'
+    
+    args.dataset = args.val_dataset
+    args.dataset_dir = args.val_data 
     
     classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
     print(f" Classes: {len(classes)}, prompt templates: {len(templates)}")
@@ -447,46 +445,13 @@ def main(args):
         if is_master(args):
             logging.info(f'Start epoch {epoch}')
 
-        # train_one_epoch_lr(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        
 
         ###### Shortlisted
         if args.train_fn == "MS":
             logging.info("Pseudo Distillation")
             train_one_epoch_lr3(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        elif args.train_fn == "WCL-MS":
-            logging.info("Pseudo Distillation + Clasification ")
-            train_one_epoch_lr4(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        elif args.train_fn == "WCL-TXHR-MS":
-            logging.info("Pseudo Distillation + Clasification + Text similarity (only HD Text)")
-            train_one_epoch_lr9(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        elif args.train_fn == "WCL-STR-MS":
-            logging.info("Pseudo Distillation + classification + Triplet Loss (SEP Anchors)")
-            train_one_epoch_lr10(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        elif args.train_fn == "WCL-NTR-MS":
-            logging.info("Pseudo Distillation + classification + Normal Triplet Loss (NO SEP Anchors)")
-            train_one_epoch_lr14(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        
-        ###### Ablation 
-        elif args.train_fn == "SS-MS" or args.train_fn == "SS-LR-MS":
-            logging.info("Self-Supervision")
-            train_one_epoch_lr16(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        elif args.train_fn == "SS-MS-E2E":
-            logging.info("E2E Self-Supervision")
-            train_one_epoch_lr17(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-
-        ###### Ablation 
-        elif args.train_fn == "SS-OCL":
-            logging.info("Self-Supervision using Octuplet Loss")
-            train_one_epoch_lr18(model, data, epoch, optimizer, scaler, scheduler, args, writer)
-        
-        ###### ROBUST 
-        elif args.train_fn == "ROBUST":
-            logging.info("ROBUST SAM implement")
-            train_one_epoch_lr19(model, data, epoch, optimizer, scaler, scheduler, args, writer)
         
         
-
         completed_epoch = epoch + 1
 
         if epoch % 2 ==0 :

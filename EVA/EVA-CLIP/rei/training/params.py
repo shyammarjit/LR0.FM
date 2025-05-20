@@ -30,6 +30,14 @@ def parse_args(args):
         default=None,
         help="Path to csv file with validation data",
     )
+
+    parser.add_argument(
+        "--val-dataset",
+        type=str,
+        default='pets',
+        help="Path to csv file with validation data",
+    )
+
     parser.add_argument(
         "--train-num-samples",
         type=int,

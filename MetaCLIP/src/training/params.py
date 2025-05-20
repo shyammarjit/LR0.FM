@@ -21,6 +21,12 @@ def parse_args():
         default=None,
         help="Path to csv file with validation data",
     )
+    parser.add_argument(
+        "--val-datataset",
+        type=str,
+        default=None,
+        help="Path to csv file with validation data",
+    )
     parser.add_argument("--train-num-samples", type=int, default=None, help="Number of samples in dataset. Required for webdataset if not available in info file.",
     )
     parser.add_argument(
