@@ -2,7 +2,7 @@
 
 ** Under maintenance (Fixing all the links and code for running ** 
 
-## 🚀 LR0.FM (ICLR-25 🎉)<br> [webpage](https://ucf-crcv.github.io/lr0.fm/) | [paper](https://arxiv.org/abs/2502.03950) | [video](https://recorder-v3.slideslive.com/#/share?share=99927&s=b52e48b7-e501-45c7-b7c9-b1d415e77f1e) | [results]() | [weights]()<br><br> <p align="left">💡 Highlights</p>
+## 🚀 LR0.FM (ICLR-25 🎉)<br> [webpage](https://ucf-crcv.github.io/lr0.fm/) | [paper](https://arxiv.org/abs/2502.03950) | [video](https://recorder-v3.slideslive.com/#/share?share=99927&s=b52e48b7-e501-45c7-b7c9-b1d415e77f1e) | [Individual results](MetaData/Results/) | [All Ranking](MetaData/Results/all_model_ranks.csv)   <br><br> <p align="left">💡 Highlights</p>
 </div>
 ✨ We introduce LR0.FM, a comprehensive benchmark evaluating the impact of low resolution on the zero-shot classification performance of 10 FM(s) across 66 backbones and 15 datasets.<br/>
 ✨ We propose a novel metric, Weighted Aggregated Robustness, to address the limitations of existing metrics and better evaluate model performance across resolutions and datasets.<br/>
