@@ -1,7 +1,4 @@
-"here 14M & 129M stands for #pretrained images, if we are not showing 14M and only showing 129M variants then we can remove 129M from model name",,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
-Dataset,"Image 
-Resolution",BLIP-ViT-B/16 (4M),,BLIP-ViT-B/16 (129M),,BLIP-ViT-B/16 & CapFilt-L (129M),,BLIP-ViT-L/16 (129M),,"BLIP-ViT-B/16 
+Dataset,"Image Resolution",BLIP-ViT-B/16 (4M),,BLIP-ViT-B/16 (129M),,BLIP-ViT-B/16 & CapFilt-L (129M),,BLIP-ViT-L/16 (129M),,"BLIP-ViT-B/16 
 (129M + COCO)",,"BLIP-ViT-B/16 
 (129M + Flickr)",,"BLIP-ViT-L/16 
 (129M + COCO)",,"BLIP-ViT-L/16 

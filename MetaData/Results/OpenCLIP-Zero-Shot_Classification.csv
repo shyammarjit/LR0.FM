@@ -1,5 +1,4 @@
-Dataset,"Image 
-Resolution",OpenCLIP-ViT-B/16,,OpenCLIP-ViT-B/32@256px,,"OpenCLIP-ViT-L/14
+Dataset,"Image Resolution",OpenCLIP-ViT-B/16,,OpenCLIP-ViT-B/32@256px,,"OpenCLIP-ViT-L/14
 (laion2b_s32b_b82k)",,"OpenCLIP-ViT-L/14
 (datacomp_xl_s13b_b90k)",,OpenCLIP-ViT-H/14,,OpenCLIP-ViT-H/14-quickgelu,,"OpenCLIP-
 ViT-H/14-quickgelu@336px",,OpenCLIP-ViT-G/14,

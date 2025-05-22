@@ -1,5 +1,4 @@
-Dataset,"Image 
-Resolution",CLIPA-ViT-G/14,,CLIPA-ViT-G/14@336px,,CLIPA-ViT-H/14,,"CLIPA-ViT-H/14@336px
+Dataset,"Image Resolution",CLIPA-ViT-G/14,,CLIPA-ViT-G/14@336px,,CLIPA-ViT-H/14,,"CLIPA-ViT-H/14@336px
 (DataComp-1B)",,"CLIPA-ViT-H/14@336px
 (LAION-2B)",,CLIPA-ViT-L/14,,CLIPA-ViT-L/14@336px,
 ,,Top1,Top5,Top1,Top5,Top1,Top5,Top1,Top5,Top1,Top5,Top1,Top5,Top1,Top5

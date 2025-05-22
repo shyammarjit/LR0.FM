@@ -1,5 +1,4 @@
-Dataset,"Image 
-Resolution",ALBEF (4M),,ALBEF (14M),,"ALBEF 
+Dataset,"Image Resolution",ALBEF (4M),,ALBEF (14M),,"ALBEF 
 (14M + coco_finetuned)",,"ALBEF 
 (14M + flickr_finetuned)",
 ,,Top1,Top5,Top1,Top5,Top1,Top5,Top1,Top5

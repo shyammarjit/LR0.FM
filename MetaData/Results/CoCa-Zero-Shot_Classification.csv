@@ -1,7 +1,4 @@
-less performance in ZS results w.r.t paper reported number but numbers matches with OpenCLIP reported one,,,,,,,
-,,,,,,,
-Dataset,"Image 
-Resolution",CoCa-ViT-B/32,,"CoCa-ViT-L/14
+Dataset,"Image Resolution",CoCa-ViT-B/32,,"CoCa-ViT-L/14
 (laion2b_s13b_b90k)",,"CoCa-ViT-L/14
 (laion2b_s13b_b90k + mscoco)",
 ,,Top1,Top5,Top1,Top5,Top1,Top5

@@ -1,5 +1,4 @@
-Dataset,"Image 
-Resolution",M2-Encoder-0.4B ,,M2-Encoder-1B ,,M2-Encoder-10B ,
+Dataset,"Image Resolution",M2-Encoder-0.4B ,,M2-Encoder-1B ,,M2-Encoder-10B ,
 ,,Top1,Top5,Top1,Top5,Top1,Top5
 Imagenet,224 (original),77.15,95.51,83.7,97.76,88.31,98.91
 ,128,73.32,94.03,82.61,97.28,87.02,98.66
