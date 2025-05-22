@@ -17,12 +17,13 @@
 
 ## 🎖️ LeaderBoard 
 
-
+X-axis represent relative robustness for each dataset, for all models. Last column indicates the SAR (using relative robustness) and WAR (using improved relative robsutnes).
 <div style="width: 100%;">
 <!-- First row -->
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
 <div style="flex: 1; text-align: left;">
-<embed src="MetaData/WAR_SAR_Ranking/16_rank.pdf" type="application/pdf" style="width: 40%;"/>
+<img src="MetaData/WAR_SAR_Ranking/test_16.png" 
+alt="Simple Line" style="hight: 100%;">
 </div>
 </div>
 </div>
