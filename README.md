@@ -15,6 +15,19 @@
 </div>
 
 
+## 🎖️ LeaderBoard 
+
+
+<div style="width: 100%;">
+<!-- First row -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
+<div style="flex: 1; text-align: left;">
+<embed src="MetaData/WAR_SAR_Ranking/16_rank.pdf" type="application/pdf" style="width: 40%;"/>
+</div>
+</div>
+</div>
+
+
 ## 🎖️ Zero-Shot Classification Results in Low Resolution
 
 Model | Backbones | Validation Code | Results|
