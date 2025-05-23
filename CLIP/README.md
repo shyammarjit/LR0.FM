@@ -22,4 +22,3 @@ python resolution_zero_shot.py --dataset [name_of_the_dataset] --image_resolutio
 ```
 Please note that name_of_the_dataset must be in small later. Image resolution must be 16, 32, 64, 128, 224 (default).
 
-## How to run linear probing?
