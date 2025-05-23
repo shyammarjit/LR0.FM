@@ -1,4 +1,4 @@
-# CLIP
+# MetaCLIP
 
 ## Create conda env ```metaclip```
 ```
