@@ -1,17 +1,6 @@
 # CLIP
 
-## Create conda env ```clip```
-```
-conda create -y -n clip python=3.11
-conda activate clip 
-```
-
-## Install packages
-```
-pip install -r requirements.txt
-```
-
-## Setup CLIP locally
+## Activate lrfm environment & Setup CLIP locally
 ```
 pip install -e.
 ```
