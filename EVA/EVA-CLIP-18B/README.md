@@ -11,7 +11,7 @@ python resolution_zero_shot.py \
 ```
 ✅ Notes:
 * Activate the ```lrfm``` environment.
-* Run the script from within the ```EVA-CLIP-18B/rei``` directory.
+* Run the script from within the ```EVA-CLIP-18B/shinji``` directory.
 * ```dataset_name``` must be lowercase.
 * ```image_resolution``` must be one of: 16, 32, 64, 128, 224 (default: 224).
 
