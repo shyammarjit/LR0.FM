@@ -1,17 +1,6 @@
 # MetaCLIP
 
-## Create conda env ```metaclip```
-```
-conda create -y -n metaclip python=3.11
-conda activate metaclip 
-```
-
-## Install packages
-```
-pip install -r requirements.txt
-```
-
-## Setup MetaCLIP locally
+## Activate lrfm environment & Setup MetaCLIP locally
 ```
 pip install -e.
 ```

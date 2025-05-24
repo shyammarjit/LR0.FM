@@ -13,7 +13,7 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-exec(open('src/open_clip/version.py').read())
+exec(open('src/open_clip_local/version.py').read())
 setup(
     name='open_clip_torch',
     version=__version__,
