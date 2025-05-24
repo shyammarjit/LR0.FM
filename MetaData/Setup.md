@@ -1,5 +1,12 @@
+## Create conda env ```lrfm```
+```python
+conda create -y -n lrfm python=3.11
+conda activate lrfm
+```
 
-python -m pip install ftfy xformers xformers
+## Install packages
+```python
+python -m pip install ftfy xformers xformers packaging
 python -m pip install webdataset iopath deepspeed==0.8.1
-python -m pip install ptflops
-
+python -m pip install ptflops regex
+```
