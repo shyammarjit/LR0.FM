@@ -5,10 +5,6 @@
 pip install -e.
 ```
 
-## How to run zero shot?
-```python
-python resolution_zero_shot.py --dataset [name_of_the_dataset] --image_resolution [32] --batch_size [128] --backbone [clip_vit_backbone]
-```
 
 ## How to run zero shot?
 ```python
