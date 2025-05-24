@@ -8,5 +8,6 @@ conda activate lrfm
 ```
 python -m pip install ftfy xformers xformers packaging
 python -m pip install webdataset iopath deepspeed==0.8.1
-python -m pip install ptflops regex
+python -m pip install ptflops regex pycocoevalcap transformers pytest
+pip install tqdm einops scikit-learn webdataset logger
 ```

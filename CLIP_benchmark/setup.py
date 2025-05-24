@@ -7,13 +7,10 @@ from setuptools import setup, find_packages
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.md') as history_file:
-    history = history_file.read()
-
 def load_requirements(f):
     return [l.strip() for l in open(f).readlines() ]
 
-requirements = load_requirements("requirements.txt")
+requirements = ["tqdm", "scikit-learn", "open_clip_torch", "webdataset", "transformers", "pytest", "pycocoevalcap"]
 
 test_requirements = requirements + ["pytest", "pytest-runner"]
 
@@ -40,7 +37,7 @@ setup(
     },
     install_requires=requirements,
     license="MIT license",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     long_description_content_type='text/markdown',
     include_package_data=True,
     keywords='clip_benchmark',

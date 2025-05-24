@@ -2,40 +2,6 @@ import torch
 from PIL import Image
 # import open_clip
 from src import open_clip_local as open_clip
-# 512
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained='metaclip_400m')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 512
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-16-quickgelu', pretrained='metaclip_400m')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 768
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-L-14-quickgelu', pretrained='metaclip_400m')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 512
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained='metaclip_2_5b')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 512
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-16-quickgelu', pretrained='metaclip_2_5b')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 768
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-L-14-quickgelu', pretrained='metaclip_2_5b')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 1024
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-H-14-quickgelu', pretrained='metaclip_2_5b', image_resolution=128)  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-# 1280
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-bigG14-quickgelu')#, pretrained='metaclip_2_5b')  # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
-
-# image = preprocess(Image.open("./docs/CLIP.png")).unsqueeze(0)
-# text = open_clip.tokenize(["a diagram", "a dog", "a cat"])
-
-# with torch.no_grad():
-#     image_features = model.encode_image(image)
-#     text_features = model.encode_text(text)
-#     image_features /= image_features.norm(dim=-1, keepdim=True)
-#     text_features /= text_features.norm(dim=-1, keepdim=True)
-
-#     print(image_features.shape, text_features.shape) # torch.Size([1, 512]) torch.Size([3, 512]) # 
-#     text_probs = (100.0 * image_features @ text_features.T).softmax(dim=-1)
-
-# print("Label probs:", text_probs)
-
-
-
-
 
 """
 This script is for CLIP 
@@ -43,10 +9,8 @@ This script is for CLIP
 import numpy as np
 import os
 import torch
-# import clip
 import argparse
 from tqdm import tqdm
-# from pkg_resources import packaging
 from dataloaders import get_dataloader
 
 
@@ -136,7 +100,6 @@ def compute_flops(model, verbose=False, print_per_layer_stat=False, resolution =
     quit()
 
 
-# model, _, preprocess = open_clip.create_model_and_transforms('ViT-bigG14-quickgelu')#, pretrained='metaclip_2_5b') # 1280
 def main(args):
     if args.backbone == 'ViT-B/32-400m':
         # for 2.5B use 'metaclip_fullcc' in OpenCLIP or 'metaclip_2_5b' in this repo
@@ -175,10 +138,6 @@ def main(args):
         
 
     model = model.cuda()
-    # load the model.
-    # input_resolution = model.visual.input_resolution
-    # context_length = model.context_length
-    # vocab_size = model.vocab_size
 
     # Preparing DATASET labels and prompts
     classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
@@ -196,17 +155,17 @@ def main(args):
 
 
     # Creating zero-shot classifier weights
-    zeroshot_weights = zeroshot_classifier(classes, templates, model) # torch.Size([512, 1000])
+    zeroshot_weights = zeroshot_classifier(classes, templates, model)
 
 
     with torch.no_grad():
         top1, top5, n = 0., 0., 0.
         for i, (images, target) in enumerate(tqdm(loader)):
-            images = images.cuda() # torch.Size([400, 3, 224, 224])
-            target = target.cuda() # torch.Size([400])
+            images = images.cuda()
+            target = target.cuda()
             
             # predict
-            image_features = model.encode_image(images) # torch.Size([400, 512]
+            image_features = model.encode_image(images)
             image_features /= image_features.norm(dim=-1, keepdim=True)
             logits = 100. * image_features @ zeroshot_weights
 
