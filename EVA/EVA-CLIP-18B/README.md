@@ -18,5 +18,5 @@ python resolution_zero_shot.py \
 
 📚 Supported Datasets: ```caltech101```, ```dtd```, ```cars```, ```sun397```, ```eurosat```, ```flowers```, ```ucf101```, ```fgvc_aircraft```, ```food101```, ```pets```, ```imagenet1k```, ```imagenet_v2```, ```imagenet_a```, ```imagenet_sketch```, ```imagenet_r```.
 
-🧠 Available EVA-CLIP Backbones: ```EVA-CLIP-8B```, ```EVA-CLIP-8B-plus```.
+🧠 Available EVA-CLIP-18B Backbones: ```EVA-CLIP-8B```, ```EVA-CLIP-8B-plus```.
 
