@@ -1,4 +1,4 @@
-# EVA-CLIP
+# EVA-CLIP-18B
 
 
 ## How to run zero shot?
