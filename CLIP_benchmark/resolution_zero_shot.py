@@ -32,13 +32,13 @@ def struct_output(args):
     sub_output_folder = os.path.join(sub_output_folder, "zero-shot")
     if not os.path.exists(sub_output_folder):
         os.mkdir(sub_output_folder)
-
     
     # create the logger
     name_of_file = f"log_{args.backbone}_{args.pretrained}_{args.image_resolution}"
     name_of_file = name_of_file.replace("/", "")
     setup_logger(output=sub_output_folder, name_of_file=name_of_file)
-    
+
+
 def zeroshot_classifier(classnames, templates, model, tokenize):
     """ 
     Creating zero-shot classifier weights. This is taken form CLIP official codebase.
@@ -47,17 +47,14 @@ def zeroshot_classifier(classnames, templates, model, tokenize):
     with torch.no_grad():
         zeroshot_weights = []
         for classname in tqdm(classnames):
-            texts = [template.format(classname) for template in templates] #format with class
-            texts = tokenize(texts).cuda() #tokenize
-            class_embeddings = model.encode_text(texts) #embed with text encoder
-            # print(class_embeddings.shape) # torch.Size([80, 512])
+            texts = [template.format(classname) for template in templates] # format with class
+            texts = tokenize(texts).cuda() # tokenize
+            class_embeddings = model.encode_text(texts) # embed with text encoder
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
             class_embedding = class_embeddings.mean(dim=0)
             class_embedding /= class_embedding.norm()
-            # print(class_embedding.shape) # torch.Size([512])
             zeroshot_weights.append(class_embedding)
         zeroshot_weights = torch.stack(zeroshot_weights, dim=1).cuda()
-        # print(zeroshot_weights.shape) # torch.Size([512, 1000])
     return zeroshot_weights
 
 
@@ -97,11 +94,9 @@ def main(args):
         cache_dir=None,
         device='cuda'
     )
-    # print(transform)
-    # exit()
     
     # Preparing DATASET labels and prompts
-    classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
+    classes, templates = get_classes_prompts(args)
 
     print(f" Model parameters: {np.sum([int(np.prod(p.shape)) for p in model.parameters()]):,}")
     print(f" Input image resolution {args.image_resolution}, Model resolution: {args.org_resolution}")
@@ -113,17 +108,17 @@ def main(args):
 
 
     # Creating zero-shot classifier weights
-    zeroshot_weights = zeroshot_classifier(classes, templates, model, tokenizer) # torch.Size([512, 1000])
+    zeroshot_weights = zeroshot_classifier(classes, templates, model, tokenizer)
 
 
     with torch.no_grad():
         top1, top5, n = 0., 0., 0.
         for i, (images, target) in enumerate(tqdm(loader)):
-            images = images.cuda() # torch.Size([400, 3, 224, 224])
-            target = target.cuda() # torch.Size([400])
+            images = images.cuda()
+            target = target.cuda()
             
             # predict
-            image_features = model.encode_image(images) # torch.Size([400, 512]
+            image_features = model.encode_image(images)
             image_features /= image_features.norm(dim=-1, keepdim=True)
             logits = 100. * image_features @ zeroshot_weights
 
@@ -160,20 +155,11 @@ def parse_args(input_args=None):
         type=str,
         default='coca_ViT-L-14',
         help="CLIP backbone model",
-        # choices=['coca_ViT-L-14', 'coca_ViT-B-32', 'ViT-H-14-378-quickgelu', 'ViT-H-14-quickgelu', 'EVA02-E-14-plus', 'ViT-SO400M-14-SigLIP-384',\
-        # 'ViT-bigG-14-CLIPA-336', 'ViT-SO400M-14-SigLIP', 'ViT-bigG-14-CLIPA', 'EVA02-E-14', 'ViT-L-14-quickgelu', 'ViT-L-16-SigLIP-384',\
-        # 'ViT-H-14-CLIPA-336', 'ViT-H-14-CLIPA', 'EVA02-L-14-336', 'EVA02-L-14', 'EVA01-g-14-plus', 'convnext_base', 'ViT-L-14-CLIPA-336', 'ViT-L-14-CLIPA',\
-        # 'convnext_base_w', 'convnext_xxlarge', 'convnext_large_d_320', 'convnext_large_d', 'convnext_base_w_320', 'EVA01-g-14', 'EVA02-B-16'],
     )
     parser.add_argument("--pretrained",
         type=str,
         default='mscoco_finetuned_laion2b_s13b_b90k',
         help="CLIP backbone model",
-        # choices=['mscoco_finetuned_laion2b_s13b_b90k', 'laion2b_s13b_b90k', 'dfn5b', 'laion2b_s9b_b144k', 'webli', 'datacomp1b', 'laion2b_s4b_b115k',\
-        # 'webli', 'metaclip_fullcc', 'merged2b_s6b_b61k', 'merged2b_s11b_b114k', 'laion400m_s13b_b51k', 'laion2b', 'laion2b_s13b_b82k_augreg',\
-        # 'laion_aesthetic_s13b_b82k', 'laion2b_s13b_b82k', 'laion2b_s34b_b82k_augreg_soup', 'laion2b_s34b_b82k_augreg_rewind', 'laion2b_s34b_b82k_augreg',\
-        # 'laion2b_s29b_b131k_ft_soup', 'laion2b_s29b_b131k_ft', 'laion2b_s26b_b102k_augreg', 'laion_aesthetic_s13b_b82k_augreg', 'laion400m_s11b_b41k', 'merged2b_s4b_b131k',\
-        # 'merged2b_s8b_b131k', ],
     )
     parser.add_argument("--num_workers",
         type=int,
