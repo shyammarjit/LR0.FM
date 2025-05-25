@@ -171,9 +171,9 @@ def parse_args(input_args=None):
     )
     parser.add_argument("--backbone",
         type=str,
-        default='2CLIPL14-336',
+        default='EVA02-CLIP-L-14-336',
         help="EVA-CLIP backbone model",
-        choices=['2CLIPL14-336', '2CLIPL14', '2CLIPbigE14p', '2CLIPbigE14', '2CLIPB16', '1CLIPg14p', '1CLIPg14'],
+        choices=['EVA02-CLIP-L-14-336', 'EVA02-CLIP-L-14', 'EVA02-CLIP-bigE-14-plus', 'EVA02-CLIP-bigE-14', 'EVA02-CLIP-B-16', 'EVA01-CLIP-g-14-plus', 'EVA01-CLIP-g-14'],
     )
     parser.add_argument("--num_workers",
         type=int,
@@ -223,22 +223,6 @@ def parse_args(input_args=None):
     if input_args is not None: args = parser.parse_args(input_args)
     else: args = parser.parse_args()
     
-    if args.backbone == "2CLIPL14-336":
-        args.backbone = 'EVA02-CLIP-L-14-336'
-    elif args.backbone == '2CLIPL14':
-        args.backbone = 'EVA02-CLIP-L-14'
-    elif args.backbone == '2CLIPbigE14p':
-        args.backbone = 'EVA02-CLIP-bigE-14-plus'
-    elif args.backbone == '2CLIPbigE14':
-        args.backbone = 'EVA02-CLIP-bigE-14'
-    elif args.backbone == '2CLIPB16':
-        args.backbone = 'EVA02-CLIP-B-16'
-    elif args.backbone == '1CLIPg14p':
-        args.backbone = 'EVA01-CLIP-g-14-plus'
-    elif args.backbone == '1CLIPg14':
-        args.backbone = 'EVA01-CLIP-g-14'
-    else:
-        raise ValueError(f'Wrong backbone type: {args.backbone}')
     # structure the output dir
     struct_output(args)
     return args
