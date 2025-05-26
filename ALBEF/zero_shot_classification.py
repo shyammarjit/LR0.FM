@@ -3,9 +3,6 @@ import os
 import yaml
 import numpy as np
 import random
-import time
-import datetime
-import json
 from pathlib import Path
 from tqdm import tqdm
 
@@ -72,7 +69,6 @@ def evaluation(model, data_loader, tokenizer, device, config):
             image_feat = model.visual_encoder(images)
             image_embed = model.vision_proj(image_feat[:,0,:])
             # image_embed = F.normalize(image_embed,dim=-1)
-            # print(image_embed.shape)
             target = target.cuda()
             
             # predict
@@ -215,9 +211,9 @@ if __name__ == '__main__':
     )
     parser.add_argument("--backbone",
         type=str,
-        default='14M',
+        default='albef_14M',
         help="CLIP backbone model",
-        choices=['14M', '4M', 'coco_finetuned', 'flicker_finetuned'],
+        choices=['albef_14M', 'albef_4M', 'coco_finetuned', 'flicker_finetuned'],
     )
     parser.add_argument("--checkpoint",
         type=str
@@ -250,16 +246,24 @@ if __name__ == '__main__':
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     yaml.dump(config, open(os.path.join(args.output_dir, 'config.yaml'), 'w'))    
     
-    """Download the checkpoint from official page and update the path below"""
+    """
+    Download the checkpoint from official page and update the path below
+    
+    ALBEF-14M: https://storage.googleapis.com/sfr-pcl-data-research/ALBEF/ALBEF.pth
+    ALBEF-4M: https://storage.googleapis.com/sfr-pcl-data-research/ALBEF/ALBEF_4M.pth
+    ALBEF-coco-finetuned: https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/ALBEF/albef_coco_retrieval_lavis.pt
+    ALBEF-flicker-finetuned: https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/ALBEF/albef_flickr_retrieval_lavis.pt
+    """
+
     if args.checkpoint is None:
-        if args.backbone=='14M':
-            args.checkpoint = ''
-        elif args.backbone=='4M':
-            args.checkpoint = ''
+        if args.backbone=='albef_14M':
+            args.checkpoint = './checkpoint/ALBEF.pth'
+        elif args.backbone=='albef_4M':
+            args.checkpoint = './checkpoint/ALBEF_4M.pth'
         elif args.backbone=='coco_finetuned':
-            args.checkpoint = ''
+            args.checkpoint = './checkpoint/albef_coco_retrieval_lavis.pt'
         elif args.backbone=='flicker_finetuned':
-            args.checkpoint = ''
+            args.checkpoint = './checkpoint/albef_flickr_retrieval_lavis.pt'
         else: raise ValueError(f"wrong checkpoint type{args.backbone}.")
     struct_output(args)
     main(args, config)
