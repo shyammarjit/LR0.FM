@@ -12,7 +12,7 @@
 ✨ Our proposed LR-TK0 enhances model robustness to low-resolution without altering pre-trained weights, demonstrating effectiveness across several datasets and its generalization capability across backbones and other approaches.<br/>
 </div>
 
-
+<br><br>
 ## 🎖️ LeaderBoard 
 
 X-axis represent relative robustness for each dataset, for all models. Last column indicates the SAR (using relative robustness) and WAR (using improved relative robsutnes).
@@ -26,7 +26,7 @@ alt="Simple Line" style="hight: 100%;">
 </div>
 </div>
 
-
+<br><br>
 ## 🎖️ Zero-Shot Classification Results in Low Resolution
 
 Model | Backbones | Validation Code | Results|
@@ -44,7 +44,7 @@ Model | Backbones | Validation Code | Results|
 |[ALIBEF](https://arxiv.org/pdf/2107.07651)|ALBEF (4M), ALBEF (14M), ALBEF (14M + coco_finetuned), ALBEF (14M + flickr_finetuned)|[code]()|[results_csv](MetaData/Results/ALBEF-Zero-Shot_Classification.csv), [results_pdf](MetaData/Results/ALBEF-Zero-Shot_Classification.pdf)|
 
 
-
+<br><br>
 ## ⭐ WAR ( & SAR ) Evaluation Metrics
 Dataset weights. 
 
@@ -69,6 +69,7 @@ Dataset weights.
 
 Code to compute WAR & Improvemend Robsutness (eq 1 in paper) is shown [here](MetaData/generate_SAR_WAR.py). Run `python generate_SAR_WAR.py 16` to generate SAR \& WAR scores for all models. Results are dummed inside `MetaData/WAR_SAR_Ranking/`.
 
+<br><br>
 ## ⚡⚡ Diffusion generated synthetic Dataset
 
 Total 7,000 captions were used to generate images. These captions were randomly sampled google caption dataset and are placed in 
@@ -92,14 +93,14 @@ for fold in range(5):
 ```
 
 
-
+<br><br>
 ## 🔥 Lr-Tokens 
 
 Training Code provided for [EVA](EVA/EVA-CLIP/rei/Scripts/train.sh), [MetaCLIP](MetaCLIP/scripts/train.sh), [OpenCLIP](open_clip/scripts/train.sh)
         
 
 
-
+<br><br>
 ## ✏️ Citation
 If you think this project is helpful, please feel free to leave a star⭐️ and cite our paper:
 
