@@ -2,12 +2,11 @@
 ```
 conda create -y -n lrfm python=3.11
 conda activate lrfm
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
 ```
 
 ## Install packages
 ```
-python -m pip install ftfy xformers packaging
-python -m pip install webdataset iopath deepspeed==0.8.1
-python -m pip install ptflops regex pycocoevalcap transformers==4.16.0 pytest torchvision
-pip install tqdm einops scikit-learn webdataset logger protobuf
+python -m pip install -r requirements.txt
 ```
