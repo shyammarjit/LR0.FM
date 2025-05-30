@@ -212,7 +212,7 @@ if __name__ == '__main__':
     parser.add_argument("--backbone",
         type=str,
         default='albef_14M',
-        help="CLIP backbone model",
+        help="ALBEF backbone model",
         choices=['albef_14M', 'albef_4M', 'coco_finetuned', 'flicker_finetuned'],
     )
     parser.add_argument("--checkpoint",
