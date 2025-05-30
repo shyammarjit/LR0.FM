@@ -11,23 +11,6 @@ from .imagenet_v2 import Imagenet_V2
 def _convert_image_to_rgb(image):
     return image.convert("RGB")
 
-# for clipA
-# Compose(
-#     Resize(size=(336, 336), interpolation=bilinear, max_size=None, antialias=True)
-#     <function _convert_to_rgb at 0x145c83a00d60>
-#     ToTensor()
-#     Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
-# )
-
-# for siglip
-
-# Compose(
-#     Resize(size=(384, 384), interpolation=bicubic, max_size=None, antialias=True)
-#     <function _convert_to_rgb at 0x14c3c8860d60>
-#     ToTensor()
-#     Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
-# )
-
 
 def create_dataset_zero_shot_retrieval(dataset, min_scale=0.5, low_resolution=128, dtd_split=1, org_resolution=336, model_name = 'siglip', root=None):
     # for CoCa
@@ -204,7 +187,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         from data.imagenet import Imagenet
         test = Imagenet(root="./datasets/ImageNet", 
             train=False,
-            class_info="./CLIP_benchmark/data/imagenet.txt",
+            class_info="./CLIP/dataloaders/imagenet.txt",
             transform=transform_test,
         )
     
@@ -243,7 +226,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
         test = Caltech101(root="./datasets/caltech-101/", 
             train=False,
             transform=transform_test,
-            categories="./CLIP_benchmark/data/classes/caltech101.txt",
+            categories="./CLIP/dataloaders/classes/caltech101.txt",
         )
 
     elif dataset=='dtd':

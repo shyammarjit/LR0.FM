@@ -1,6 +1,3 @@
-"""
-This script is for CLIP 
-"""
 import numpy as np
 import os
 import torch
@@ -154,12 +151,12 @@ def parse_args(input_args=None):
     parser.add_argument("--backbone",
         type=str,
         default='coca_ViT-L-14',
-        help="CLIP backbone model",
+        help="coca/siglip/openclip/clipa backbone model",
     )
     parser.add_argument("--pretrained",
         type=str,
         default='mscoco_finetuned_laion2b_s13b_b90k',
-        help="CLIP backbone model",
+        help="coca/siglip/openclip/clipa backbone model",
     )
     parser.add_argument("--num_workers",
         type=int,
@@ -202,7 +199,6 @@ def parse_args(input_args=None):
         choices=['siglip', 'coca', 'clipa', 'openclip'],
         help="model configuration name for tranformation function.",
     )
-
     parser.add_argument("--dataset_dir", type=str, default=None)
 
 
