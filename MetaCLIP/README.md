@@ -1,6 +1,6 @@
 # MetaCLIP
 
-## Activate lrfm environment & Setup MetaCLIP locally
+## Activate lrfm environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)) & Setup MetaCLIP locally
 ```
 pip install -e.
 ```
