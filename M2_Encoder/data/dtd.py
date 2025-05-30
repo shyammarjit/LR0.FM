@@ -36,7 +36,7 @@ class DTD(data.Dataset):
         transform: List -> A list of transformation function compotition.
     """
     def __init__(self, 
-        root="", 
+        root='./datasets/dtd/', 
         transform=None,
         train=True, 
         SPLIT='1'

@@ -10,7 +10,7 @@ from collections import defaultdict
 from torchvision.datasets.vision import VisionDataset
 class EuroSAT(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/EuroSAT",
         train=True,
         transform=None,
     ):

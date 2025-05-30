@@ -1,5 +1,5 @@
 cd ~/LR0.FM/open_clip/
-conda activate pathak
+conda activate lrfm
 ENV='nccl'
 
 CLASS_DIR='~/LR0.FM/CLIP/dataloaders/classes/'

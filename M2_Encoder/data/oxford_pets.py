@@ -9,10 +9,10 @@ from torchvision.datasets.vision import VisionDataset
 
 class OxfordPets(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/oxford_pets",
         train=True,
         transform=None,
-        class_info="./Ant-Multi-Modal-Framework/prj/M2_Encoder/data/classes/pets.txt",
+        class_info="./CLIP/dataloaders/classes/pets.txt",
     ):
         self.root = root
         self.train = train
@@ -76,3 +76,5 @@ class OxfordPets(VisionDataset):
                 labels.append(label)
                 classnames.append(breed)
         return impaths, labels, classnames
+
+    

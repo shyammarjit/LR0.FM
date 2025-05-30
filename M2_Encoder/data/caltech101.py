@@ -23,7 +23,7 @@ class Caltech101(VisionDataset):
         transform: List -> A list of transformation function compotition.
     """
     def __init__(self,
-        root="", 
+        root="./datasets/caltech-101",
         transform=None,
         train=True,
         categories=None,

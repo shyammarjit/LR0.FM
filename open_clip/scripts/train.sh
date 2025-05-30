@@ -1,5 +1,5 @@
 cd ~/LR0.FM/open_clip/
-conda activate pathak
+conda activate lrfm
 
 NUM_GPU=1
 PORT=12345

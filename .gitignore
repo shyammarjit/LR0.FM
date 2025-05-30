@@ -221,7 +221,7 @@ ENV/
 .ropeproject
 
 *events.out.tfevents.*
-*.txt
+# *.txt
 *.out
 *slurm*
 *.pth*

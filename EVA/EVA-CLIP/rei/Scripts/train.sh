@@ -1,7 +1,7 @@
 
 # TRAIN LR-TK0
 cd ~/LR0.FM/EVA/EVA-CLIP/rei/
-conda activate pathak 
+conda activate lrfm 
 PRETRAINED_IMAGE="eva_clip"
 DATA=/data/priyank/Diffision_images/
 CLASS_DIR='~/LR0.FM/CLIP/dataloaders/classes/'

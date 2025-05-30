@@ -12,7 +12,7 @@ class ImagenetR(Dataset):
         transform: List -> A list of transformation function compotition.
     """
     def __init__(self, 
-        root="", 
+        root="./datasets/imagenet-r", 
         train=True,
         class_info=None,
         transform=None,

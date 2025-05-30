@@ -16,13 +16,9 @@ from tqdm import tqdm
 from pkg_resources import packaging
 from data import create_dataset_zero_shot
 from logger import setup_logger
-# print("Torch version:", torch.__version__)
-
-
-
 
 cfg = {
-    'model_config': './configs/Encoder_0.4B.json',
+    'model_config': './configs/Encoder_0.4B.json', # Encoder_1B.json # Encoder_10B.json
     NN_EXECUTOR_KEY: 'm2_encoder.M2EncoderExecutor'
 }
 
@@ -97,10 +93,10 @@ def main(args):
     encoder.warmup_local_model()
 
     # Preparing DATASET labels and prompts
-    classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
+    classes, templates = get_classes_prompts(args)
 
     # Creating zero-shot classifier weights
-    zeroshot_weights = zeroshot_classifier(classes, templates, encoder) # torch.Size([512, 1000])
+    zeroshot_weights = zeroshot_classifier(classes, templates, encoder)
 
     # Prepare the dataloader
     test = create_dataset_zero_shot(args.dataset, dtd_split=args.dtd_split, low_resolution=args.image_resolution)
@@ -109,15 +105,12 @@ def main(args):
     with torch.no_grad():
         top1, top5, n = 0., 0., 0.
         for i, (images, target) in enumerate(tqdm(loader)):
-            images = images.cuda() # torch.Size([400, 3, 224, 224])
-            target = target.cuda() # torch.Size([400])
+            images = images.cuda()
+            target = target.cuda()
             
             # predict
             image_features = encoder.local_inference(images, encoding_type='image') 
-            # model.encode_image(images) # torch.Size([400, 512]
-            # image_features /= image_features.norm(dim=-1, keepdim=True)
             logits = 90.1358 * image_features @ zeroshot_weights
-            # logits = 100. * image_features @ zeroshot_weights
 
             # measure accuracy
             acc1, acc5 = accuracy(logits, target, topk=(1, 5))

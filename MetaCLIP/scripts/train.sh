@@ -2,7 +2,7 @@
 ############################ LR-TK0 
 
 cd ~/LR0.FM/MetaCLIP/
-conda activate pathak
+conda activate lrfm
 
 NUM_GPU=2
 PORT=12346

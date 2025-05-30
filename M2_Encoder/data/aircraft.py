@@ -15,7 +15,7 @@ import os.path
 from torchvision.datasets.vision import VisionDataset
 class aircraft(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/fgvc-aircraft-2013b/data/",
         transform=None,
         train=True,
     ):

@@ -12,7 +12,7 @@ class Imagenet_sketch(Dataset):
         transform: List -> A list of transformation function compotition.
     """
     def __init__(self, 
-        root="", 
+        root="./datasets/imagenet-a", 
         train=True,
         class_info=None,
         transform=None,

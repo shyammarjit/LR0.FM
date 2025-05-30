@@ -15,7 +15,7 @@ import os.path
 from torchvision.datasets.vision import VisionDataset
 class Food101(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/food-101/",
         transform=None,
         train=True,
     ):

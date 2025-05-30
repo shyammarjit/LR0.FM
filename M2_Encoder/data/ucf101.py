@@ -10,10 +10,10 @@ import warnings
 from torchvision.datasets.vision import VisionDataset
 class UCF101(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/UCF101_midframes/",
         train=True,
         transform=None,
-        class_info="./Ant-Multi-Modal-Framework/prj/M2_Encoder/data/classes/ucf101.txt",
+        class_info="./CLIP/dataloaders/classes/ucf101.txt",
     ):
         
         self.root = root

@@ -9,10 +9,10 @@ from collections import defaultdict
 from torchvision.datasets.vision import VisionDataset
 class OxfordFlowers(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/Flowers102/flowers-102",
         train=True,
         transform=None,
-        class_info='./Ant-Multi-Modal-Framework/prj/M2_Encoder/data/split_zhou_OxfordFlowers.json',
+        class_info='./CLIP/dataloaders/split_zhou_OxfordFlowers.json',
     ):
         self.root = root
         self.train = train

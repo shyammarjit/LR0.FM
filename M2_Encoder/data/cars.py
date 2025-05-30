@@ -11,10 +11,10 @@ from torchvision.datasets.vision import VisionDataset
 
 class Cars(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/stanford_cars",
         train=True,
         transform=None,
-        class_info="./Ant-Multi-Modal-Framework/prj/M2_Encoder/data/classes/cars.txt",
+        class_info="./CLIP/dataloaders/classes/cars.txt",
     ):
         self.root = root
         self.train = train

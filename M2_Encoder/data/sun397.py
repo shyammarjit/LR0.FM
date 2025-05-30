@@ -5,7 +5,7 @@ from torchvision.datasets.vision import VisionDataset
 
 class SUN397(VisionDataset):
     def __init__(self,
-        root="", 
+        root="./datasets/SUN397/",
         transform=None,
         train=True,
         SPLIT="01",
