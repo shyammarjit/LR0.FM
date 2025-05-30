@@ -43,17 +43,14 @@ def zeroshot_classifier(classnames, templates, model):
     with torch.no_grad():
         zeroshot_weights = []
         for classname in tqdm(classnames):
-            texts = [template.format(classname) for template in templates] #format with class
-            texts = clip.tokenize(texts).cuda() #tokenize
-            class_embeddings = model.encode_text(texts) #embed with text encoder
-            # print(class_embeddings.shape) # torch.Size([80, 512])
+            texts = [template.format(classname) for template in templates] # format with class
+            texts = clip.tokenize(texts).cuda() # tokenize
+            class_embeddings = model.encode_text(texts) # embed with text encoder
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
             class_embedding = class_embeddings.mean(dim=0)
             class_embedding /= class_embedding.norm()
-            # print(class_embedding.shape) # torch.Size([512])
             zeroshot_weights.append(class_embedding)
         zeroshot_weights = torch.stack(zeroshot_weights, dim=1).cuda()
-        # print(zeroshot_weights.shape) # torch.Size([512, 1000])
     return zeroshot_weights
 
 
@@ -96,7 +93,7 @@ def main(args):
         preprocess = clip.resolution_transform(args.image_resolution, n_px_org=input_resolution)
 
     # Preparing DATASET labels and prompts
-    classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
+    classes, templates = get_classes_prompts(args)
 
     print(f" Model parameters: {np.sum([int(np.prod(p.shape)) for p in model.parameters()]):,}")
     print(f" Input image resolution {args.image_resolution}, Model resolution: {input_resolution}")
@@ -110,17 +107,17 @@ def main(args):
 
 
     # Creating zero-shot classifier weights
-    zeroshot_weights = zeroshot_classifier(classes, templates, model) # torch.Size([512, 1000])
+    zeroshot_weights = zeroshot_classifier(classes, templates, model)
 
 
     with torch.no_grad():
         top1, top5, n = 0., 0., 0.
         for i, (images, target) in enumerate(tqdm(loader)):
-            images = images.cuda() # torch.Size([400, 3, 224, 224])
-            target = target.cuda() # torch.Size([400])
+            images = images.cuda()
+            target = target.cuda()
             
             # predict
-            image_features = model.encode_image(images) # torch.Size([400, 512]
+            image_features = model.encode_image(images)
             image_features /= image_features.norm(dim=-1, keepdim=True)
             logits = 100. * image_features @ zeroshot_weights
 
