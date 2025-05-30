@@ -1,5 +1,5 @@
 cd ~/LR0.FM/CLIP_benchmark/
-conda activate pathak
+conda activate lrfm
 
 
 CLASS_DIR='~/LR0.FM/CLIP/dataloaders/classes/'

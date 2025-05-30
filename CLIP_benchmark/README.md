@@ -1,6 +1,6 @@
 # CLIP Benchmark
 
-## Activate lrfm environment & Setup clip_benchmark locally
+## Activate lrfm environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)) & Setup clip_benchmark locally
 ```
 pip install -e. --force
 ```
@@ -13,7 +13,7 @@ python resolution_zero_shot.py \
   --batch_size [batch_size] \
   --backbone [coca/siglip/openclip/clipa model_backbone] \
   --pretrained [backbone_is_pretrained_on_which_dataset] \
-  --model_name [siglip|openclip|coca|clipa]
+  --model_name [coca|siglip|openclip|clipa]
 ```
 
 ✅ Notes:
