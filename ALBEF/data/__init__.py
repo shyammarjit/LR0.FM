@@ -42,7 +42,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, origina
     elif dataset == 'imagenet_a':
         test = ImagenetA(root="", 
             train=False,
-            class_info="./CLIP/dataloaders/imagenet_a.txt",
+            class_info="./ALBEF/data/imagenet_a.txt",
             transform=transform_test,
         )
         # may have readme file
@@ -50,7 +50,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, origina
     elif dataset == 'imagenet_r':
         test = ImagenetR(root="", 
             train=False,
-            class_info="./CLIP/dataloaders/imagenet_r.txt",
+            class_info="./ALBEF/data/imagenet_r.txt",
             transform=transform_test,
         )
         # may have readme file
@@ -58,14 +58,14 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, origina
     elif dataset == 'imagenet_sketch':
         test = Imagenet_sketch(root="", 
             train=False,
-            class_info="./CLIP/dataloaders/imagenet_sketch.txt",
+            class_info="./ALBEF/data/imagenet_sketch.txt",
             transform=transform_test,
         )
     
     elif dataset == 'imagenet_v2':
         test = Imagenet_V2(root="", 
             train=False,
-            class_info="./CLIP/dataloaders/imagenet_v2.txt",
+            class_info="./ALBEF/data/imagenet_v2.txt",
             transform=transform_test,
         )
 
@@ -74,7 +74,7 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, origina
         test = Caltech101(root="", 
             train=False,
             transform=transform_test,
-            categories="./data/classes/caltech101.txt",
+            categories="./ALBEF/data/classes/caltech101.txt",
         )
 
     elif dataset=='dtd':
