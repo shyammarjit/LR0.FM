@@ -225,12 +225,12 @@ if __name__ == '__main__':
     )
     parser.add_argument("--class_dir",
         type=str,
-        default="./data/classes/",
+        default="./CLIP/data/classes/",
         help="input image resolution for model, please give class dir",
     )
     parser.add_argument("--templates_dir",
         type=str,
-        default="./data/templates",
+        default="./CLIP/data/templates",
         help="input image resolution for model",
     )
 
