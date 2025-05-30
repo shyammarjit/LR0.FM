@@ -12,7 +12,7 @@ bash download.sh
 python -m torch.distributed.launch --nproc_per_node=1 --use_env --master_port=35582 zero_shot_classification.py --config ./configs/Retrieval_coco.yaml --output_dir ./ZS --low_resolution [16|32|64|128|224] --dataset [dataset_name] --backbone [albef_backbone] --batch_size [batch_size] --evaluate
 ```
 ✅ Notes:
-* Activate the ```lrfm``` environment.
+* Activate the ```lrfm``` environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)). 
 * Run the script from within the ```ALBEF``` directory.
 * ```dataset_name``` must be lowercase.
 * ```image_resolution``` must be one of: 16, 32, 64, 128, 224 (default: 224).
