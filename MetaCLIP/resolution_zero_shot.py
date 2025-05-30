@@ -47,17 +47,14 @@ def zeroshot_classifier(classnames, templates, model):
     with torch.no_grad():
         zeroshot_weights = []
         for classname in tqdm(classnames):
-            texts = [template.format(classname) for template in templates] #format with class
-            texts = open_clip.tokenize(texts).cuda() #tokenize
-            class_embeddings = model.encode_text(texts) #embed with text encoder
-            # print(class_embeddings.shape) # torch.Size([80, 512])
+            texts = [template.format(classname) for template in templates] # format with class
+            texts = open_clip.tokenize(texts).cuda() # tokenize
+            class_embeddings = model.encode_text(texts) # embed with text encoder
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
             class_embedding = class_embeddings.mean(dim=0)
             class_embedding /= class_embedding.norm()
-            # print(class_embedding.shape) # torch.Size([512])
             zeroshot_weights.append(class_embedding)
         zeroshot_weights = torch.stack(zeroshot_weights, dim=1).cuda()
-        # print(zeroshot_weights.shape) # torch.Size([512, 1000])
     return zeroshot_weights
 
 
@@ -140,13 +137,9 @@ def main(args):
     model = model.cuda()
 
     # Preparing DATASET labels and prompts
-    classes, templates = get_classes_prompts(args) # print(len(classes), len(templates)) # 1000 80
+    classes, templates = get_classes_prompts(args)
 
     print(f" Model parameters: {np.sum([int(np.prod(p.shape)) for p in model.parameters()]):,}")
-    # compute_flops(model)
-    # print(f" Input image resolution {args.image_resolution}, Model resolution: {input_resolution}")
-    # print(f" Context length: {context_length}")
-    # print(f" Vocab size: {vocab_size}")
     print(f" Classes: {len(classes)}, prompt templates: {len(templates)}")
 
     # Prepare the dataloader
