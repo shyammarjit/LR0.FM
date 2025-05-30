@@ -1,6 +1,6 @@
 # CLIP
 
-## Activate lrfm environment & Setup CLIP locally
+## Activate lrfm environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)) & Setup CLIP locally
 ```
 pip install -e.
 ```
