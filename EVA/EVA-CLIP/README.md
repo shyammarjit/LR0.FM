@@ -10,7 +10,7 @@ python resolution_zero_shot.py \
   --backbone [eva_clip_backbone]
 ```
 ✅ Notes:
-* Activate the ```lrfm``` environment.
+* Activate the ```lrfm``` environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)).
 * Run the script from within the ```EVA-CLIP/rei``` directory.
 * ```dataset_name``` must be lowercase.
 * ```image_resolution``` must be one of: 16, 32, 64, 128, 224 (default: 224).
