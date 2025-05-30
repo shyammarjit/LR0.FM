@@ -7,87 +7,9 @@ from .imagenet_r import ImagenetR
 from .imagenet_sketch import Imagenet_sketch
 from .imagenet_v2 import Imagenet_V2
 
-# from data.coco_karpathy_dataset import coco_karpathy_train, coco_karpathy_caption_eval, coco_karpathy_retrieval_eval
-# from data.nocaps_dataset import nocaps_eval
-# from data.flickr30k_dataset import flickr30k_train, flickr30k_retrieval_eval
-# from data.vqa_dataset import vqa_dataset
-# from data.nlvr_dataset import nlvr_dataset
-# from data.pretrain_dataset import pretrain_dataset
-# from transform.randaugment import RandomAugment
 
 def _convert_image_to_rgb(image):
     return image.convert("RGB")
-
-# def create_dataset(dataset, config, min_scale=0.5, low_resolution=384, original_resolution=384):
-    
-#     normalize = transforms.Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))
-
-#     transform_train = transforms.Compose([                        
-#             transforms.RandomResizedCrop(config['image_size'],scale=(min_scale, 1.0),interpolation=InterpolationMode.BICUBIC),
-#             transforms.RandomHorizontalFlip(),
-#             RandomAugment(2,5,isPIL=True,augs=['Identity','AutoContrast','Brightness','Sharpness','Equalize',
-#                                               'ShearX', 'ShearY', 'TranslateX', 'TranslateY', 'Rotate']),     
-#             transforms.ToTensor(),
-#             normalize,
-#         ])        
-
-#     if low_resolution != original_resolution:  
-#         transform_test = transforms.Compose([
-#             transforms.Resize((low_resolution, low_resolution),interpolation=InterpolationMode.BICUBIC),
-#             transforms.Resize((config['image_size'],config['image_size']),interpolation=InterpolationMode.BICUBIC),
-#             transforms.ToTensor(),
-#             normalize,
-#         ])
-#     else:
-#         transform_test = transforms.Compose([
-#             transforms.Resize((config['image_size'],config['image_size']),interpolation=InterpolationMode.BICUBIC),
-#             transforms.ToTensor(),
-#             normalize,
-#         ])
-        
-#     print("test transformations: ", transform_test)
-
-#     if dataset=='pretrain':
-#         dataset = pretrain_dataset(config['train_file'], config['laion_path'], transform_train)              
-#         return dataset  
-    
-#     elif dataset=='caption_coco':   
-#         train_dataset = coco_karpathy_train(transform_train, config['image_root'], config['ann_root'], prompt=config['prompt'])
-#         val_dataset = coco_karpathy_caption_eval(transform_test, config['image_root'], config['ann_root'], 'val')
-#         test_dataset = coco_karpathy_caption_eval(transform_test, config['image_root'], config['ann_root'], 'test')   
-#         return train_dataset, val_dataset, test_dataset
-    
-#     elif dataset=='nocaps':   
-#         val_dataset = nocaps_eval(transform_test, config['image_root'], config['ann_root'], 'val')
-#         test_dataset = nocaps_eval(transform_test, config['image_root'], config['ann_root'], 'test')   
-#         return val_dataset, test_dataset   
-    
-#     elif dataset=='retrieval_coco':
-#         # we are getting call here
-#         train_dataset = coco_karpathy_train(transform_train, config['image_root'], config['ann_root'])
-#         val_dataset = coco_karpathy_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'val') 
-#         test_dataset = coco_karpathy_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'test')          
-#         return train_dataset, val_dataset, test_dataset
-    
-#     elif dataset=='retrieval_flickr':
-#         # we are getting call here
-#         train_dataset = flickr30k_train(transform_train, config['image_root'], config['ann_root'])
-#         val_dataset = flickr30k_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'val') 
-#         test_dataset = flickr30k_retrieval_eval(transform_test, config['image_root'], config['ann_root'], 'test')          
-#         return train_dataset, val_dataset, test_dataset     
-    
-#     elif dataset=='vqa': 
-#         train_dataset = vqa_dataset(transform_train, config['ann_root'], config['vqa_root'], config['vg_root'], 
-#                                     train_files = config['train_files'], split='train') 
-#         test_dataset = vqa_dataset(transform_test, config['ann_root'], config['vqa_root'], config['vg_root'], split='test')
-#         return train_dataset, test_dataset
-    
-#     elif dataset=='nlvr': 
-#         train_dataset = nlvr_dataset(transform_train, config['image_root'], config['ann_root'],'train')
-#         val_dataset = nlvr_dataset(transform_test, config['image_root'], config['ann_root'],'val')
-#         test_dataset = nlvr_dataset(transform_test, config['image_root'], config['ann_root'],'test')     
-#         return train_dataset, val_dataset, test_dataset
-
 
 def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, original_resolution=384, dtd_split=1, root=None):
     normalize = transforms.Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))      
