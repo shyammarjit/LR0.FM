@@ -74,12 +74,19 @@ def read_txt(file_location):
     except: pass
     return content
 
-def get_classes_prompts(args):
+def extend_user_path(path):
+    """
+    Extend the user path to the home directory.
+    """
     home_directory = os.path.expanduser('~')
-    args.class_dir = args.class_dir.replace("~", home_directory)
-    args.templates_dir = args.templates_dir.replace("~", home_directory)
-    
-    
+    if path.startswith('~'):
+        return path.replace("~", home_directory)
+    return path
+
+
+def get_classes_prompts(args):
+    args.class_dir = extend_user_path(args.class_dir)
+    args.templates_dir = extend_user_path(args.templates_dir)  
     classes = read_txt(os.path.join(args.class_dir, f"{args.dataset}.txt"))
     templates = read_txt(os.path.join(args.templates_dir, f"{args.dataset}.txt"))
     return classes, templates
@@ -219,12 +226,12 @@ def parse_args(input_args=None):
     )
     parser.add_argument("--class_dir",
         type=str,
-        default="./MetaCLIP/dataloaders/classes/",
+        default="~/LR0.FM/CLIP/dataloaders/classes/",
         help="input image resolution for model",
     )
     parser.add_argument("--templates_dir",
         type=str,
-        default="./MetaCLIP/dataloaders/templates",
+        default="~/LR0.FM/CLIP/dataloaders/templates",
         help="input image resolution for model",
     )
     parser.add_argument("--dataset_dir", type=str, default=None, help="dataset root",)

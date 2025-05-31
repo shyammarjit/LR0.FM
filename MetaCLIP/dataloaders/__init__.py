@@ -73,92 +73,77 @@ def get_dataloader(dataset_name, transform=None, loader_type = "test", root=None
             raise ValueError(f" Wrong {loader_type} type.")
     
     elif dataset_name == "imagenet1k":
-        test = Imagenet(root="./datasets/ImageNet", 
-            train=False,
-            class_info="./MetaCLIP/dataloaders/imagenet.txt",
-            transform=transform,
-        )
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
+        test = Imagenet(root="./datasets/ImageNet", train=False, class_info=class_info, transform=transform)
         if loader_type=="test":
             print(f" Test images: {len(test)}")
             return test
         elif loader_type=="train":
-            train = Imagenet(root="./datasets/ImageNet", 
-                train=True,
-                class_info="./MetaCLIP/dataloaders/imagenet.txt",
-                transform=transform,
-            )
+            train = Imagenet(root="./datasets/ImageNet", train=True, class_info=class_info, transform=transform)
             print(f" Train images {len(train)}, Test images {len(test)}")
             return train, test
         else:
             raise ValueError(f" Wrong {loader_type} type.")
 
     elif dataset_name == 'imagenet_a':
-        test = ImagenetA(root="./datasets/imagenet-a", 
-            train=False,
-            class_info="./CLIP/dataloaders/imagenet_a.txt",
-            transform=transform,
-        )
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_a.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
+        test = ImagenetA(root="./datasets/imagenet-a", train=False, class_info=class_info, transform=transform)
         if loader_type=="test":
             print(f" Test images: {len(test)}")
             return test
         elif loader_type=="train":
-            train = ImagenetA(root="./datasets/imagenet-a", 
-                train=True,
-                class_info="./CLIP/dataloaders/imagenet_a.txt",
-                transform=transform,
-                k_shot=k_shot,
-            )
+            train = ImagenetA(root="./datasets/imagenet-a", train=True, class_info=class_info, transform=transform, k_shot=k_shot)
             print(f" Train images {len(train)}, Test images {len(test)}")
             return train, test
         else:
             raise ValueError(f" Wrong {loader_type} type.")
 
     elif dataset_name == 'imagenet_r':
-        test = ImagenetR(root="./datasets/imagenet-r", 
-            train=False,
-            class_info="./CLIP/dataloaders/imagenet_r.txt",
-            transform=transform,
-        )
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_r.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
+        test = ImagenetR(root="./datasets/imagenet-r", train=False, class_info=class_info, transform=transform)
         if loader_type=="test":
             print(f" Test images: {len(test)}")
             return test
         elif loader_type=="train":
-            train = ImagenetR(root="./datasets/imagenet-r", 
-                train=True,
-                class_info="./CLIP/dataloaders/imagenet_r.txt",
-                transform=transform,
-                k_shot=k_shot,
-            )
+            train = ImagenetR(root="./datasets/imagenet-r", train=True, class_info=class_info, transform=transform, k_shot=k_shot)
             print(f" Train images {len(train)}, Test images {len(test)}")
             return train, test
         else:
             raise ValueError(f" Wrong {loader_type} type.")
     
     elif dataset_name == 'imagenet_sketch':
-        test = Imagenet_sketch(root="./datasets/imagenet_sketch", 
-            train=False,
-            class_info="./CLIP/dataloaders/imagenet_sketch.txt",
-            transform=transform,
-        )
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_sketch.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
+        test = Imagenet_sketch(root="./datasets/imagenet_sketch", train=False, class_info=class_info, transform=transform)
         if loader_type=="test":
             print(f" Test images: {len(test)}")
             return test
         elif loader_type=="train":
-            train = Imagenet_sketch(root="./datasets/imagenet_sketch", 
-                train=True,
-                class_info="./CLIP/dataloaders/imagenet_sketch.txt",
-                transform=transform,
-                k_shot=k_shot,
-            )
+            train = Imagenet_sketch(root="./datasets/imagenet_sketch", train=True, class_info=class_info, transform=transform, k_shot=k_shot)
             print(f" Train images {len(train)}, Test images {len(test)}")
             return train, test
         else:
             raise ValueError(f" Wrong {loader_type} type.")
 
     elif dataset_name == 'imagenet_v2':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_v2.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = Imagenet_V2(root="./datasets/imagenetv2/tree/main/imagenetv2-matched-frequency", 
             train=False,
-            class_info="./CLIP/dataloaders/imagenet_v2.txt",
+            class_info=class_info,
             transform=transform,
         )
         if loader_type=="test":
@@ -167,7 +152,7 @@ def get_dataloader(dataset_name, transform=None, loader_type = "test", root=None
         elif loader_type=="train":
             train = Imagenet_V2(root="./datasets/imagenetv2/tree/main/imagenetv2-matched-frequency", 
                 train=True,
-                class_info="./CLIP/dataloaders/imagenet_v2.txt",
+                class_info=class_info,
                 transform=transform,
                 k_shot=k_shot,
             )
@@ -177,14 +162,15 @@ def get_dataloader(dataset_name, transform=None, loader_type = "test", root=None
             raise ValueError(f" Wrong {loader_type} type.")    
 
 
-
-
-
     elif dataset_name == "caltech101":
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/caltech101.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = Caltech101(root="./datasets/caltech-101/", 
             train=False,
             transform=transform,
-            categories="./MetaCLIP/dataloaders/classes/caltech101.txt",
+            categories=class_info,
         )
 
         if loader_type=="test":
@@ -194,7 +180,7 @@ def get_dataloader(dataset_name, transform=None, loader_type = "test", root=None
             train = Caltech101(root="./datasets/caltech-101/", 
                 train=True,
                 transform=transform,
-                categories="./MetaCLIP/dataloaders/classes/caltech101.txt",
+                categories=class_info,
             )
             print(f" Train images: {len(train)}, Test images: {len(test)}")
             return train, test
