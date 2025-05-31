@@ -53,47 +53,71 @@ def create_dataset_zero_shot(dataset, min_scale=0.5, low_resolution=128, dtd_spl
     print("test transformations: ", transform_test)
     
     if dataset=='imagenet1k':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         from data.imagenet import Imagenet
         test = Imagenet(root="", 
             train=False,
-            class_info="./Ant-Multi-Modal-Framework/prj/M2_Encoder/data/imagenet.txt",
+            class_info=class_info,
             transform=transform_test,
         )
 
     elif dataset == 'imagenet_a':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_a.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = ImagenetA(root="", 
             train=False,
-            class_info="./resolution-bm/CLIP/dataloaders/imagenet_a.txt",
+            class_info=class_info,
             transform=transform_test,
         )
     
     elif dataset == 'imagenet_r':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_r.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = ImagenetR(root="", 
             train=False,
-            class_info="./resolution-bm/CLIP/dataloaders/imagenet_r.txt",
+            class_info=class_info,
             transform=transform_test,
         )
     
     elif dataset == 'imagenet_sketch':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_sketch.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = Imagenet_sketch(root="", 
             train=False,
-            class_info="./resolution-bm/CLIP/dataloaders/imagenet_sketch.txt",
+            class_info=class_info,
             transform=transform_test,
         )
     
     elif dataset == 'imagenet_v2':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/imagenet_v2.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         test = Imagenet_V2(root="", 
             train=False,
-            class_info="./resolution-bm/CLIP/dataloaders/imagenet_v2.txt",
+            class_info=class_info,
             transform=transform_test,
         )
     
     elif dataset=='caltech101':
+        class_info="~/LR0.FM/CLIP/dataloaders/classes/caltech101.txt"
+        home_directory = os.path.expanduser('~')
+        class_info = class_info.replace("~", home_directory)
+
         from data.caltech101 import Caltech101
         test = Caltech101(root="", 
             train=False,
             transform=transform_test,
-            categories="./resolution-bm/Ant-Multi-Modal-Framework/prj/M2_Encoder/data/classes/caltech101.txt",
+            categories=class_info,
         )
 
     elif dataset=='dtd':

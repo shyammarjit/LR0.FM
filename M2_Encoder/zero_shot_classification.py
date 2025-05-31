@@ -1,6 +1,3 @@
-"""
-This script is for 0.4B parameters 
-"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -17,10 +14,6 @@ from pkg_resources import packaging
 from data import create_dataset_zero_shot
 from logger import setup_logger
 
-cfg = {
-    'model_config': './configs/Encoder_0.4B.json', # Encoder_1B.json # Encoder_10B.json
-    NN_EXECUTOR_KEY: 'm2_encoder.M2EncoderExecutor'
-}
 
 def struct_output(args):
     """ create the output folder structure ."""
@@ -52,16 +45,11 @@ def zeroshot_classifier(classnames, templates, encoder):
     with torch.no_grad():
         zeroshot_weights = []
         for classname in tqdm(classnames):
-            texts = [template.format(classname) for template in templates] #format with class
+            texts = [template.format(classname) for template in templates] # format with class
             class_embeddings = encoder.local_inference(texts, encoding_type='text')
-            # print(class_embeddings.shape) # torch.Size([80, 512])
-            # class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
             class_embedding = class_embeddings.mean(dim=0)
-            # class_embedding /= class_embedding.norm()
-            # print(class_embedding.shape) # torch.Size([512])
             zeroshot_weights.append(class_embedding)
         zeroshot_weights = torch.stack(zeroshot_weights, dim=1).cuda()
-        # print(zeroshot_weights.shape) # torch.Size([512, 1000])
     return zeroshot_weights
 
 
@@ -81,7 +69,18 @@ def read_txt(file_location):
     except: pass
     return content
 
+def extend_user_path(path):
+    """
+    Extend the user path to the home directory.
+    """
+    home_directory = os.path.expanduser('~')
+    if path.startswith('~'):
+        return path.replace("~", home_directory)
+    return path
+
 def get_classes_prompts(args):
+    args.class_dir = extend_user_path(args.class_dir)
+    args.templates_dir = extend_user_path(args.templates_dir)
     classes = read_txt(os.path.join(args.class_dir, f"{args.dataset}.txt"))
     templates = read_txt(os.path.join(args.templates_dir, f"{args.dataset}.txt"))
     return classes, templates
@@ -136,6 +135,12 @@ def parse_args(input_args=None):
         choices=['imagenet1k', 'imagenet_a', 'imagenet_sketch', 'imagenet_r', 'imagenet_v2', 'caltech101', 'dtd', 'food101', 'fgvc_aircraft',\
             'sun397', 'pets', 'cars', 'flowers', 'eurosat', 'ucf101', 'birdsnap'],
     )
+    parser.add_argument("--encode_backbone",
+        type=str,
+        default="Encoder_0.4B",
+        help=" ",
+        choices=['Encoder_0.4B', 'Encoder_1B', 'Encoder_10B'],
+    )
     parser.add_argument("--batch_size",
         type=int,
         default=400,
@@ -163,12 +168,12 @@ def parse_args(input_args=None):
     )
     parser.add_argument("--class_dir",
         type=str,
-        default="./CLIP/dataloaders/classes/",
+        default="~/LR0.FM/CLIP/dataloaders/classes/",
         help="input image resolution for model",
     )
     parser.add_argument("--templates_dir",
         type=str,
-        default="./CLIP/dataloaders/templates",
+        default="~/LR0.FM/CLIP/dataloaders/templates",
         help="input image resolution for model",
     )
     if input_args is not None: args = parser.parse_args(input_args)
@@ -180,6 +185,10 @@ def parse_args(input_args=None):
     
 if __name__ == "__main__":
     args = parse_args()
+    cfg = {
+        'model_config': f'./configs/{args.encode_backbone}.json',
+        NN_EXECUTOR_KEY: 'm2_encoder.M2EncoderExecutor'
+    }
     main(args)
     
     

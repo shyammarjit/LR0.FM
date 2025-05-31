@@ -1,2 +1,0 @@
-a photo of a {}.
-a photo of the {}.
