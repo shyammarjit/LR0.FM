@@ -1,23 +1,21 @@
 # M2_Encoder
 
 ## How to run zero shot?
-
-Run this inside `M2_Enocoder` folder
 ```python
-python zero_shot_classification.py --dataset imagenet1k --image_resolution 224
-
-
-
-python -m torch.distributed.launch --nproc_per_node=1 --use_env --master_port=35582 zero_shot_classification.py --config ./configs/Retrieval_coco.yaml --output_dir ./ZS --low_resolution [16|32|64|128|224] --dataset [dataset_name] --backbone [albef_backbone] --batch_size [batch_size] --evaluate
+python zero_shot_classification.py \
+  --dataset [dataset_name] \
+  --image_resolution [16|32|64|128|224] \
+  --batch_size [batch_size] \
+  --encode_backbone [M2_encoder_backbone]
 ```
 ✅ Notes:
-* Activate the ```lrfm``` environment (please refer to [here]()).
-* Run the script from within the ```ALBEF``` directory.
+* Activate the ```lrfm``` environment (Please follow [Setup.md](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md)).
+* Run the script from within the `M2_Enocoder` directory.
 * ```dataset_name``` must be lowercase.
 * ```image_resolution``` must be one of: 16, 32, 64, 128, 224 (default: 224).
 
 
 📚 Supported Datasets: ```caltech101```, ```dtd```, ```cars```, ```sun397```, ```eurosat```, ```flowers```, ```ucf101```, ```fgvc_aircraft```, ```food101```, ```pets```, ```imagenet1k```, ```imagenet_v2```, ```imagenet_a```, ```imagenet_sketch```, ```imagenet_r```.
 
-🧠 Available ALBEF Backbones: ```flicker_finetuned```, ```coco_finetuned```, ```albef_14M```, ```albef_4M```.
+🧠 Available $M^2$_Encoder Backbones: ```Encoder_0.4B```, ```Encoder_1B```, ```Encoder_10B```.
 
