@@ -1,11 +1,9 @@
-image_root: '/home/shyam/'
+image_root: ''
 ann_root: 'annotation'
 dataset: 'flickr'
 
 # set pretrained as a file path or an url
 pretrained: 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_retrieval_flickr.pth'
-
-# size of vit model; base or large
 
 vit: 'base'
 batch_size_train: 32
@@ -13,13 +11,6 @@ batch_size_test: 64
 vit_grad_ckpt: True
 vit_ckpt_layer: 4
 init_lr: 1e-5
-
-# vit: 'large'
-# batch_size_train: 16
-# batch_size_test: 32
-# vit_grad_ckpt: True
-# vit_ckpt_layer: 10
-# init_lr: 5e-6
 
 image_size: 384
 queue_size: 57600

@@ -64,7 +64,18 @@ def read_txt(file_location):
     except: pass
     return content
 
+def extend_user_path(path):
+    """
+    Extend the user path to the home directory.
+    """
+    home_directory = os.path.expanduser('~')
+    if path.startswith('~'):
+        return path.replace("~", home_directory)
+    return path
+
 def get_classes_prompts(args):
+    args.class_dir = extend_user_path(args.class_dir)
+    args.templates_dir = extend_user_path(args.templates_dir)
     classes = read_txt(os.path.join(args.class_dir, f"{args.dataset}.txt"))
     templates = read_txt(os.path.join(args.templates_dir, f"{args.dataset}.txt"))
     return classes, templates
@@ -175,13 +186,13 @@ def struct_output(args):
         os.mkdir(sub_output_folder)
 
     # create the logger
-    name_of_file = f"log_{args.backbone}_{args.resolution}"
+    name_of_file = f"log_{os.path.basename(args.config)}_{args.resolution}"
     name_of_file = name_of_file.replace("/", "")
     setup_logger(output=sub_output_folder, name_of_file=name_of_file)
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()     
-    parser.add_argument('--config', default='./configs/retrieval_flickr.yaml')
+    parser.add_argument('--config', default='pretrained_ViTB14.yaml', type=str, help='config file for the model')
     parser.add_argument('--output_dir', default='./output/')        
     parser.add_argument('--evaluate', action='store_true')
     parser.add_argument('--device', default='cuda')
@@ -189,7 +200,7 @@ if __name__ == '__main__':
     parser.add_argument('--world_size', default=1, type=int, help='number of distributed processes')    
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
     parser.add_argument('--distributed', default=True, type=bool)
-    parser.add_argument('--resolution', default=128, type=int, help="low resolution size")
+    parser.add_argument('--resolution', default=224, type=int, help="low resolution size")
     parser.add_argument("--dataset",
         type=str,
         default="imagenet1k",
@@ -202,12 +213,6 @@ if __name__ == '__main__':
         type=int,
         help="test batch size"
     )
-    parser.add_argument("--backbone",
-        type=str,
-        default='ViT-B14',
-        help="CLIP backbone model",
-        choices=['ViT-B14', 'ViT-B129', 'ViT-BCap129', 'ViT-L129'],
-    )
     parser.add_argument("--dtd_split",
         type=int,
         default=1,
@@ -215,12 +220,12 @@ if __name__ == '__main__':
     )
     parser.add_argument("--class_dir",
         type=str,
-        default="/home/shyam/resolution-bm/BLIP/data/classes/",
+        default="~/LR0.FM/CLIP/dataloaders/classes/",
         help="input image resolution for model",
     )
     parser.add_argument("--templates_dir",
         type=str,
-        default="/home/shyam/resolution-bm/BLIP/data/templates",
+        default="~/LR0.FM/CLIP/dataloaders/templates",
         help="input image resolution for model",
     )
     parser.add_argument("--dataset_dir", type=str, default=None, help="input image resolution for model",)
@@ -230,34 +235,13 @@ if __name__ == '__main__':
 
     config = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
-    
-    # format the config according to the input args
-    if args.backbone=='ViT-B14':
-        config['pretrained'] = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_14M.pth'
-        config['vit'] = 'base'
-        config['vit_ckpt_layer'] = 4
-        config['init_lr'] = 1e-5
-    elif args.backbone=='ViT-B129':
-        config['pretrained'] = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base.pth'
-        config['vit'] = 'base'
-        config['vit_ckpt_layer'] = 4
-        config['init_lr'] = 1e-5
-    elif args.backbone=='ViT-BCap129':
-        config['pretrained'] = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_capfilt_large.pth'
-        config['vit'] = 'base'
-        config['vit_ckpt_layer'] = 4
-        config['init_lr'] = 1e-5
-    elif args.backbone=='ViT-L129':
-        config['pretrained'] = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_large.pth'
-        config['vit'] = 'large'
-        config['vit_ckpt_layer'] = 12
-        config['init_lr'] = 5e-6
-    else:
-        raise ValueError(f"wrong backbone type.")
 
     config['batch_size_test'] = args.batch_size
     config['dataset'] = args.dataset
     config['image_root'] = ""
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    args.config = os.path.join(current_dir, "configs", args.config)
 
     struct_output(args)
     main(args, config)
