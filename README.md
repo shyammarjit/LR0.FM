@@ -28,6 +28,7 @@ alt="Simple Line" style="hight: 100%;">
 
 <br><br>
 ## 🎖️ Zero-Shot Classification Results in Low Resolution
+[Setup](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md) has instructions for setting up the conda environment to run and train models. 
 
 Model | Backbones | Validation Code | Results|
 | --- | --- | --- | --- |
@@ -98,7 +99,7 @@ for fold in range(5):
 
 Training Code provided for [EVA](EVA/EVA-CLIP/rei/Scripts/train.sh), [MetaCLIP](MetaCLIP/scripts/train.sh), [OpenCLIP](open_clip/scripts/train.sh)
         
-
+[Setup](https://github.com/shyammarjit/LR0.FM/blob/main/MetaData/Setup.md) has instructions for setting up the conda environment to run and train models. 
 
 <br><br>
 ## ✏️ Citation
