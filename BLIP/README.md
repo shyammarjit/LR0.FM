@@ -3,7 +3,7 @@
 ## How to run zero shot?
 
 ```python
-python -m torch.distributed.run --nproc_per_node=1 test.py \
+python -m torch.distributed.run --nproc_per_node=1 zero_shot_classification.py \
     --dataset [dataset_name] \
     --config [blip_config_file] \
     --resolution [16|32|64|128|224] \
