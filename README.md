@@ -12,6 +12,8 @@
 ✨ Our proposed LR-TK0 enhances model robustness to low-resolution without altering pre-trained weights, demonstrating effectiveness across several datasets and its generalization capability across backbones and other approaches.<br/>
 </div>
 
+✨ This work will also appear in ***[ICCV'25 (Non-Proceedings Tracks)](https://excv-workshop.github.io/)***
+
 <br><br>
 ## 🎖️ LeaderBoard 
 
